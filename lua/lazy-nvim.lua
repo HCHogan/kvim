@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
-  {                   -- Adds git related signs to the gutter, as well as utilities for managing changes
+  { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
@@ -41,7 +41,7 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  {                     -- Useful plugin to show you pending keybinds.
+  { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
@@ -67,14 +67,14 @@ require('lazy').setup({
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
-  require 'custom.cmp',
-  require 'custom.finder',
-  require 'custom.lint',
-  require 'custom.lsp',
-  require 'custom.treesitter',
-  require 'custom.ui',
+  require 'lazy-config.finder',
+  require 'lazy-config.lint',
+  require 'lazy-config.lsp',
+  require 'lazy-config.treesitter',
+  require 'lazy-config.cmp',
+  require 'lazy-config.ui',
 
-  { import = 'custom.plugins' },
+  { import = 'lazy-config.plugins' },
 }, {
   ui = {
     backdrop = 70,
