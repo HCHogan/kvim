@@ -1,0 +1,73 @@
+# List of non-Neovim rocks.
+# This includes things like `toml` or other lua packages.
+[rocks]
+
+# List of Neovim plugins to install alongside their versions.
+# If the plugin name contains a dot then you must add quotes to the key name!
+[plugins]
+"rocks.nvim" = "2.36.0" # rocks.nvim can also manage itself :D
+"rocks-lazy.nvim" = "1.0.1"
+nvim-web-devicons = "0.100"
+"rocks-git.nvim" = "2.0.1"
+"rocks-config.nvim" = "2.2.0"
+"plenary.nvim" = { git = "nvim-lua/plenary.nvim" }
+"nui.nvim" = "0.3.0"
+
+nvim-treesitter = "scm" # ts
+tree-sitter-haskell = "0.0.2"
+
+"telescope.nvim" = "scm" # misc
+"neo-tree.nvim" = "3.26"
+"mini.nvim" = "0.9.0"
+
+rose-pine = "3.0.1" # ui
+"dropbar.nvim" = "8.6.0"
+"barbar.nvim" = { git = 'romgrk/barbar.nvim' }
+todo-comments = { git = "folke/todo-comments.nvim" }
+"noice.nvim" = "4.5.0"
+
+nvim-lspconfig = "0.1.8" # lsp
+"lazydev.nvim" = "1.8.0"
+"fidget.nvim" = { git = 'j-hui/fidget.nvim' }
+"haskell-tools.nvim" = "4.0.0"
+rustaceanvim = "5.1.4"
+"copilot.lua" = { git = "zbirenbaum/copilot.lua" }
+
+nvim-cmp = "scm" # cmp
+cmp_luasnip = {git = 'saadparwaiz1/cmp_luasnip'}
+cmp-nvim-lsp = "scm"
+luasnip = "2.3.0"
+
+
+[bundles.ui]
+items = [
+    "rose-pine",
+    "dropbar.nvim",
+    "barbar.nvim",
+    "todo-comments",
+    "noice.nvim",
+]
+config = "rocks-config.ui"
+
+[bundles.lsp] # Create a bundle called `lsp`
+items = [
+    "nvim-lspconfig",
+    "lazydev.nvim",
+    "fidget.nvim",
+    "haskell-tools.nvim",
+    "rustaceanvim",
+]
+config = "rocks-config.lsp"
+
+[bundles.cmp]
+items = [
+    "nvim-cmp",
+    "cmp_luasnip",
+    "cmp-nvim-lsp",
+    "luasnip",
+]
+config = "rocks-config.cmp"
+
+[config]
+plugins_dir = "rocks-config/plugins"
+auto_setup = false

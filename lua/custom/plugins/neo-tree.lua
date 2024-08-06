@@ -7,9 +7,9 @@ return {
     'MunifTanjim/nui.nvim',
   },
   cmd = 'Neotree',
-  keys = {
-    { '<leader>e', '<cmd>Neotree toggle<CR>', desc = 'NeoTree toggle' },
-  },
+  -- keys = {
+  --   { '<leader>e', '<cmd>Neotree toggle<CR>', desc = 'NeoTree toggle' },
+  -- },
   opts = {
     filesystem = {
       window = {

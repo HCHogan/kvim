@@ -13,6 +13,8 @@ vim.keymap.set('n', 'J', '5j')
 vim.keymap.set('v', 'J', '5j')
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>')
 
+vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'NeoTree toggle' })
+
 -- Diagnostic keymaps
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
