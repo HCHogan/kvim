@@ -16,6 +16,7 @@ return {
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
+    event = 'BufEnter',
     dependencies = {
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`

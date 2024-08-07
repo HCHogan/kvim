@@ -138,6 +138,8 @@ local servers = {
   },
 }
 
+require('lspconfig')['lua_ls'].setup {}
+
 require('copilot').setup {
   panel = {
     enabled = true, -- TODO: copilot-cmp
