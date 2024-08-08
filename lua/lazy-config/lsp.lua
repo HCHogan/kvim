@@ -58,9 +58,9 @@ return {
           map('<leader>ld', function()
             vim.diagnostic.open_float()
           end, 'Hover diagnostic')
-          map('<leader>lf', function()
-            vim.lsp.buf.format()
-          end, 'Format buffer')
+          -- map('<leader>lf', function()
+          --   vim.lsp.buf.format()
+          -- end, 'Format buffer')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
 
@@ -139,8 +139,6 @@ return {
     dependencies = {
       'nvim-telescope/telescope.nvim',
       'MunifTanjim/nui.nvim',
-      'nvim-tree/nvim-tree.lua',         -- (optional) to manage project files
-      'stevearc/oil.nvim',               -- (optional) to manage project files
       'nvim-treesitter/nvim-treesitter', -- (optional) for Quick tests support (required Swift parser)
     },
     config = function()

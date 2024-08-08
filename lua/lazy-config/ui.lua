@@ -2,7 +2,7 @@ return {
   {
     'romgrk/barbar.nvim',
     dependencies = {
-      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
     init = function()
@@ -30,11 +30,19 @@ return {
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-  { -- You can easily change to a different colorscheme.
+  {                  -- You can easily change to a different colorscheme.
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function() end,
     config = function()
+      require('tokyonight').setup({
+        styles = {
+          keywords = { italic = false, bold = true },
+          -- VertSplit = { fg = "muted", bg = "muted" },
+          -- EndOfBuffer = { fg = 'rose' },
+          -- Function = { italic = true },
+        },
+      })
       vim.cmd 'colorscheme tokyonight-night'
     end,
   },
