@@ -2,7 +2,7 @@
 
 <!--toc:start-->
 
-- [kvim](#kvim)
+- [My Neovim Config](#kvim)
   - [Introduction](#introduction)
   - [Dependencies](#dependencies)
   <!--toc:end-->
