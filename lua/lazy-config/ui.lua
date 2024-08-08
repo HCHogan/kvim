@@ -23,8 +23,7 @@ return {
   },
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
+    event = 'BufEnter',
     main = 'ibl',
     opts = {},
   },
@@ -102,21 +101,21 @@ return {
           -- end
         end,
       }
-      vim.cmd 'colorscheme rose-pine'
+      -- vim.cmd 'colorscheme rose-pine'
     end,
   },
   { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      -- vim.cmd.colorscheme 'tokyonight-night'
+    init = function() end,
+    config = function()
+      vim.cmd 'colorscheme tokyonight-night'
     end,
   },
+  -- {
+  --   'rebelot/kanagawa.nvim',
+  --   config = function()
+  --     vim.cmd 'colorscheme kanagawa-dragon'
+  --   end,
+  -- },
 }

@@ -55,6 +55,9 @@ return {
           map('<leader>la', '<cmd>Lspsaga code_action<CR>', 'LSP code action')
           map('<leader>lS', '<cmd>Lspsaga outline<CR>', 'Symbols outline')
           map('<leader>lr', '<cmd>Lspsaga rename<CR>', 'Symbols rename')
+          map('<leader>ld', function()
+            vim.diagnostic.open_float()
+          end, 'Hover diagnostic')
           map('<leader>lf', function()
             vim.lsp.buf.format()
           end, 'Format buffer')
@@ -155,13 +158,19 @@ return {
   },
   {
     'nvimdev/lspsaga.nvim',
-    config = function()
-      require('lspsaga').setup {}
-    end,
     event = 'LspAttach',
     dependencies = {
       'nvim-treesitter/nvim-treesitter', -- optional
       'nvim-tree/nvim-web-devicons', -- optional
     },
+    config = function()
+      require('lspsaga').setup {
+        diagnostic = {
+          keys = {
+            quit = { 'q', '<ESC>' },
+          },
+        },
+      }
+    end,
   },
 }

@@ -72,15 +72,15 @@ return {
             winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
           },
         },
+        confirm_opts = {
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = false,
+        },
         -- view = {
         --   entries = {
         --     selection_order = 'near_cursor',
         --   },
         -- },
-        confirm_opts = {
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = false,
-        },
 
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`

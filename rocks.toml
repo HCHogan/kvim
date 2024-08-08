@@ -13,7 +13,7 @@ nvim-web-devicons = "0.100"
 "plenary.nvim" = { git = "nvim-lua/plenary.nvim" }
 "nui.nvim" = "0.3.0"
 
-nvim-treesitter = "scm" # ts
+# nvim-treesitter = "scm" # ts
 tree-sitter-haskell = "0.0.2"
 
 "telescope.nvim" = "scm" # misc
