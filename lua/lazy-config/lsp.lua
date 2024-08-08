@@ -119,6 +119,8 @@ return {
           client.offset_encoding = 'utf-8'
         end,
       }
+      lspconfig['tinymist'].setup{}
+      lspconfig['marksman'].setup{}
     end,
   },
 

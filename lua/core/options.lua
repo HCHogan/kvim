@@ -1,3 +1,4 @@
+local icons = require('core.icons').icons
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -73,6 +74,17 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 vim.o.fillchars = 'eob: '
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.DiagnosticError,
+      [vim.diagnostic.severity.HINT] = icons.DiagnosticHint,
+      [vim.diagnostic.severity.WARN] = icons.DiagnosticWarn,
+      [vim.diagnostic.severity.INFO] = icons.DiagnosticInfo,
+    },
+  }
+})
 
 if vim.g.neovide then
   local neovide_transparency = 0.75

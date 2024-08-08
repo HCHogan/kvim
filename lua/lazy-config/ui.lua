@@ -46,84 +46,86 @@ return {
       vim.cmd 'colorscheme tokyonight-night'
     end,
   },
-  -- {
-  --   'rebelot/kanagawa.nvim',
-  --   config = function()
-  --     vim.cmd 'colorscheme kanagawa-dragon'
-  --   end,
-  -- },
-  -- {
-  --   'rose-pine/neovim',
-  --   name = 'rose-pine',
-  --   config = function()
-  --     require('rose-pine').setup {
-  --       variant = 'auto', -- auto, main, moon, or dawn
-  --       dark_variant = 'main', -- main, moon, or dawn
-  --       dim_inactive_windows = false,
-  --       extend_background_behind_borders = true,
-  --
-  --       enable = {
-  --         terminal = true,
-  --         legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-  --         migrations = true, -- Handle deprecated options automatically
-  --       },
-  --
-  --       styles = {
-  --         bold = true,
-  --         italic = false,
-  --         transparency = false,
-  --       },
-  --
-  --       groups = {
-  --         border = 'muted',
-  --         link = 'iris',
-  --         panel = 'surface',
-  --
-  --         error = 'love',
-  --         hint = 'iris',
-  --         info = 'foam',
-  --         note = 'pine',
-  --         todo = 'rose',
-  --         warn = 'gold',
-  --
-  --         git_add = 'foam',
-  --         git_change = 'rose',
-  --         git_delete = 'love',
-  --         git_dirty = 'rose',
-  --         git_ignore = 'muted',
-  --         git_merge = 'iris',
-  --         git_rename = 'pine',
-  --         git_stage = 'iris',
-  --         git_text = 'rose',
-  --         git_untracked = 'subtle',
-  --
-  --         h1 = 'iris',
-  --         h2 = 'foam',
-  --         h3 = 'rose',
-  --         h4 = 'gold',
-  --         h5 = 'pine',
-  --         h6 = 'foam',
-  --       },
-  --
-  --       highlight_groups = {
-  --         Comment = { italic = true },
-  --         -- VertSplit = { fg = "muted", bg = "muted" },
-  --         -- EndOfBuffer = { fg = 'rose' },
-  --         -- Function = { italic = true },
-  --       },
-  --
-  --       before_highlight = function(group, highlight, palette)
-  --         -- Disable all undercurls if highlight.undercurl then
-  --         --     highlight.undercurl = false
-  --         -- end
-  --         --
-  --         -- Change palette colour
-  --         -- if highlight.fg == palette.pine then
-  --         --     highlight.fg = palette.foam
-  --         -- end
-  --       end,
-  --     }
-  --     -- vim.cmd 'colorscheme rose-pine'
-  --   end,
-  -- },
+  {
+    "rebelot/heirline.nvim",
+    dependencies = { "Zeioth/heirline-components.nvim" },
+    opts = function()
+      local lib = require "heirline-components.all"
+      return {
+        opts = {
+          disable_winbar_cb = function(args) -- We do this to avoid showing it on the greeter.
+            local is_disabled = not require("heirline-components.buffer").is_valid(args.buf) or
+                lib.condition.buffer_matches({
+                  buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
+                  filetype = { "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
+                }, args.buf)
+            return is_disabled
+          end,
+        },
+        tabline = { -- UI upper bar
+          lib.component.tabline_conditional_padding(),
+          lib.component.tabline_buffers(),
+          lib.component.fill { hl = { bg = "tabline_bg" } },
+          lib.component.tabline_tabpages()
+        },
+        winbar = { -- UI breadcrumbs bar
+          init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
+          fallthrough = false,
+          -- Winbar for terminal, neotree, and aerial.
+          {
+            condition = function() return not lib.condition.is_active() end,
+            {
+              lib.component.neotree(),
+              lib.component.compiler_play(),
+              lib.component.fill(),
+              lib.component.compiler_build_type(),
+              lib.component.compiler_redo(),
+              lib.component.aerial(),
+            },
+          },
+          -- Regular winbar
+          {
+            lib.component.neotree(),
+            lib.component.compiler_play(),
+            lib.component.fill(),
+            lib.component.breadcrumbs(),
+            lib.component.fill(),
+            lib.component.compiler_redo(),
+            lib.component.aerial(),
+          }
+        },
+        statuscolumn = { -- UI left column
+          init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
+          lib.component.foldcolumn(),
+          lib.component.numbercolumn(),
+          lib.component.signcolumn(),
+        } or nil,
+        statusline = { -- UI statusbar
+          hl = { fg = "fg", bg = "bg" },
+          lib.component.mode(),
+          lib.component.git_branch(),
+          lib.component.file_info(),
+          lib.component.git_diff(),
+          lib.component.diagnostics(),
+          lib.component.fill(),
+          lib.component.cmd_info(),
+          lib.component.fill(),
+          lib.component.lsp(),
+          lib.component.compiler_state(),
+          lib.component.virtual_env(),
+          lib.component.nav(),
+          lib.component.mode { surround = { separator = "right" } },
+        },
+      }
+    end,
+    config = function(_, opts)
+      local heirline = require "heirline"
+      local lib = require "heirline-components.all"
+
+      -- Setup
+      lib.init.subscribe_to_events()
+      heirline.load_colors(lib.hl.get_colors())
+      heirline.setup(opts)
+    end,
+  }
 }

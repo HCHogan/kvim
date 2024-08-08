@@ -33,8 +33,13 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- builtin toggle comment
-vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'Toggle comment line' })
-vim.keymap.set('v', '<leader>/', 'gc', { desc = 'Toggle comment line' })
+vim.keymap.set('n', '<leader>/', 'gcc', { remap = true, desc = "Toggle comment line" })
+vim.keymap.set('v', '<leader>/', 'gc', { remap = true, desc = "Toggle comment" })
+
+vim.keymap.set('n', "<Leader>w", "<Cmd>w<CR>", { desc = "Save" })
+vim.keymap.set('n', "<Leader>q", "<Cmd>confirm q<CR>", { desc = "Quit Window" })
+vim.keymap.set('n', "<Leader>Q", "<Cmd>confirm qall<CR>", { desc = "Exit" })
+vim.keymap.set('n', "<Leader>n", "<Cmd>enew<CR>", { desc = "New File" })
 
 -- set indent
 vim.keymap.set('n', '<leader>ui', function()

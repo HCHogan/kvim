@@ -1,13 +1,26 @@
 # kvim
 
-## My neovim config
+<!--toc:start-->
 
+- [kvim](#kvim)
+  - [Introduction](#introduction)
+  - [Dependencies](#dependencies)
+  <!--toc:end-->
+
+## Introduction
+
+I write **Haskell**, Rust and Swift.
+
+Here is the screenshot:
 ![screenshot](./assets/screenshot.png)
 
-dependencies:
-+ ghcup
-+ rustup
-+ sourcekit
-+ pyright
-+ clangd
-+ lua-language-server
+## Dependencies
+
+- ghcup cabal hls ghc
+- rustup cargo rustc
+- sourcekit swiftlint swiftformat
+- basedpyright ruff
+- clangd
+- lua-language-server
+- marksman markdownlint prettierd prettier
+- typst tinymist typstyle

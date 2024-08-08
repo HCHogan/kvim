@@ -1,4 +1,35 @@
+local icons = require('core.icons').icons
+
 require('neo-tree').setup {
+  default_component_configs = {
+    indent = {
+      padding = 0,
+      expander_collapsed = icons.FoldClosed,
+      expander_expanded = icons.FoldOpened,
+    },
+    icon = {
+      folder_closed = icons.FolderClosed,
+      folder_open = icons.FolderOpen,
+      folder_empty = icons.FolderEmpty,
+      folder_empty_open = icons.FolderEmpty,
+      default = icons.DefaultFile,
+    },
+    modified = { symbol = icons.FileModified },
+    git_status = {
+      symbols = {
+        added = icons.GitAdd,
+        deleted = icons.GitDelete,
+        modified = icons.GitChange,
+        renamed = icons.GitRenamed,
+        untracked = icons.GitUntracked,
+        ignored = icons.GitIgnored,
+        unstaged = icons.GitUnstaged,
+        staged = icons.GitStaged,
+        conflict = icons.GitConflict,
+      },
+    },
+  },
+
   filesystem = {
     window = {
       width = 30,
