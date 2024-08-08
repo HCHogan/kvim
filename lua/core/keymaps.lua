@@ -35,3 +35,19 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- builtin toggle comment
 vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'Toggle comment line' })
 vim.keymap.set('v', '<leader>/', 'gc', { desc = 'Toggle comment line' })
+
+-- set indent
+vim.keymap.set('n', '<leader>ui', function()
+  local input_avail, input = pcall(vim.fn.input, 'Set indent value (>0 expandtab, <=0 noexpandtab): ')
+  if input_avail then
+    local indent = tonumber(input)
+    if not indent or indent == 0 then
+      return
+    end
+    vim.bo.expandtab = (indent > 0) -- local to buffer
+    indent = math.abs(indent)
+    vim.bo.tabstop = indent -- local to buffer
+    vim.bo.softtabstop = indent -- local to buffer
+    vim.bo.shiftwidth = indent -- local to buffer
+  end
+end)

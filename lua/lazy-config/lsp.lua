@@ -105,6 +105,12 @@ return {
       local lspconfig = require 'lspconfig'
       lspconfig['lua_ls'].setup {}
       lspconfig['basedpyright'].setup {}
+      lspconfig['clangd'].setup {
+        cmd = { '/opt/homebrew/opt/llvm/bin/clangd' },
+        capabilities = {
+          offsetEncoding = 'utf-8',
+        },
+      }
     end,
   },
 
