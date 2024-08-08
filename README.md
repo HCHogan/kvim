@@ -2,6 +2,8 @@
 
 ## My neovim config
 
+![screenshot](./assets/screenshot.png)
+
 dependencies:
 + ghcup
 + rustup
