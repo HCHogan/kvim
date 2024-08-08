@@ -1,2 +1,11 @@
 # kvim
-neovim config based on rocks.nvim
+
+## My neovim config
+
+dependencies:
++ ghcup
++ rustup
++ sourcekit
++ pyright
++ clangd
++ lua-language-server
