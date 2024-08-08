@@ -111,18 +111,96 @@ return {
           offsetEncoding = 'utf-8',
         },
       }
+      lspconfig['sourcekit'].setup {
+        filetypes = { 'swift' },
+        on_init = function(client)
+          -- HACK: to fix some issues with LSP
+          -- more details: https://github.com/neovim/neovim/issues/19237#issuecomment-2237037154
+          client.offset_encoding = 'utf-8'
+        end,
+      }
     end,
   },
 
   {
     'mrcjkb/rustaceanvim',
     version = '^5', -- Recommended
-    lazy = false, -- This plugin is already lazy
+    lazy = false,   -- This plugin is already lazy
   },
   {
     'mrcjkb/haskell-tools.nvim',
     version = '^4', -- Recommended
-    lazy = false, -- This plugin is already lazy
+    lazy = false,   -- This plugin is already lazy
+  },
+  {
+    'wojciech-kulik/xcodebuild.nvim',
+    lazy = true,
+    event = 'BufEnter *.swift',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'MunifTanjim/nui.nvim',
+      'nvim-tree/nvim-tree.lua',         -- (optional) to manage project files
+      'stevearc/oil.nvim',               -- (optional) to manage project files
+      'nvim-treesitter/nvim-treesitter', -- (optional) for Quick tests support (required Swift parser)
+    },
+    config = function()
+      local uv = vim.loop
+      -- Function to check if a directory exists
+      local function directory_exists(path)
+        local stat = uv.fs_stat(path)
+        return stat and stat.type == "directory"
+      end
+
+      -- Function to check for .xcodeproj or .xcworkspace directories in the current working directory
+      local function has_xcode_files()
+        local current_dir = uv.cwd()
+        local dir = uv.fs_opendir(current_dir, nil, 100)
+        if dir then
+          while true do
+            local entries = uv.fs_readdir(dir)
+            if not entries then break end
+            for _, entry in ipairs(entries) do
+              if
+                  (entry.name:match "%.xcodeproj$" or entry.name:match "%.xcworkspace$") and entry.type == "directory"
+              then
+                uv.fs_closedir(dir)
+                return true
+              end
+            end
+          end
+          uv.fs_closedir(dir)
+        end
+        return false
+      end
+
+      if not has_xcode_files() then return end
+      require('xcodebuild').setup {}
+      vim.keymap.set('n', '<leader>X', '<cmd>XcodebuildPicker<cr>', { desc = 'Show Xcodebuild Actions' })
+      vim.keymap.set('n', '<leader>xf', '<cmd>XcodebuildProjectManager<cr>', { desc = 'Show Project Manager Actions' })
+
+      vim.keymap.set('n', '<leader>xb', '<cmd>XcodebuildBuild<cr>', { desc = 'Build Project' })
+      vim.keymap.set('n', '<leader>xB', '<cmd>XcodebuildBuildForTesting<cr>', { desc = 'Build For Testing' })
+      vim.keymap.set('n', '<leader>xr', '<cmd>XcodebuildBuildRun<cr>', { desc = 'Build & Run Project' })
+
+      vim.keymap.set('n', '<leader>xt', '<cmd>XcodebuildTest<cr>', { desc = 'Run Tests' })
+      vim.keymap.set('v', '<leader>xt', '<cmd>XcodebuildTestSelected<cr>', { desc = 'Run Selected Tests' })
+      vim.keymap.set('n', '<leader>xT', '<cmd>XcodebuildTestClass<cr>', { desc = 'Run Current Test Class' })
+      vim.keymap.set('n', '<leader>x.', '<cmd>XcodebuildTestRepeat<cr>', { desc = 'Repeat Last Test Run' })
+
+      vim.keymap.set('n', '<leader>xl', '<cmd>XcodebuildToggleLogs<cr>', { desc = 'Toggle Xcodebuild Logs' })
+      vim.keymap.set('n', '<leader>xc', '<cmd>XcodebuildToggleCodeCoverage<cr>', { desc = 'Toggle Code Coverage' })
+      vim.keymap.set('n', '<leader>xC', '<cmd>XcodebuildShowCodeCoverageReport<cr>',
+        { desc = 'Show Code Coverage Report' })
+      vim.keymap.set('n', '<leader>xe', '<cmd>XcodebuildTestExplorerToggle<cr>', { desc = 'Toggle Test Explorer' })
+      vim.keymap.set('n', '<leader>xs', '<cmd>XcodebuildFailingSnapshots<cr>', { desc = 'Show Failing Snapshots' })
+
+      vim.keymap.set('n', '<leader>xd', '<cmd>XcodebuildSelectDevice<cr>', { desc = 'Select Device' })
+      vim.keymap.set('n', '<leader>xp', '<cmd>XcodebuildSelectTestPlan<cr>', { desc = 'Select Test Plan' })
+      vim.keymap.set('n', '<leader>xq', '<cmd>Telescope quickfix<cr>', { desc = 'Show QuickFix List' })
+
+      vim.keymap.set('n', '<leader>xx', '<cmd>XcodebuildQuickfixLine<cr>', { desc = 'Quickfix Line' })
+      vim.keymap.set('n', '<leader>xa', '<cmd>XcodebuildCodeActions<cr>', { desc = 'Show Code Actions' })
+    end,
   },
   {
     'zbirenbaum/copilot.lua',
@@ -167,7 +245,7 @@ return {
     event = 'LspAttach',
     dependencies = {
       'nvim-treesitter/nvim-treesitter', -- optional
-      'nvim-tree/nvim-web-devicons', -- optional
+      'nvim-tree/nvim-web-devicons',     -- optional
     },
     config = function()
       require('lspsaga').setup {
