@@ -44,6 +44,8 @@ return {
           map('gi', '<CMD>Lspsaga finder imp<CR>', 'goto implementation')
           map('gr', '<cmd>Lspsaga finder<CR>', 'Search references')
           map('gp', '<cmd>Lspsaga peek_definition<CR>', 'Peek definition')
+          map('gtp', '<cmd>Lspsaga peek_type_definition<CR>', 'Peek type definition')
+          map('gtd', '<cmd>Lspsaga goto_type_definition<CR>', 'Type definition')
 
           map('[d', '<CMD>Lspsaga diagnostic_jump_prev<CR>', 'jump to previous diagnostics')
           map(']d', '<CMD>Lspsaga diagnostic_jump_next<CR>', 'jump to next diagnostics')

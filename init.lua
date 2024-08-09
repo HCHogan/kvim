@@ -12,3 +12,4 @@ if use_rocks == '1' then
 else
   require 'lazy-nvim'
 end
+
