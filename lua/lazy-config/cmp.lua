@@ -25,9 +25,6 @@ return {
           return 'make install_jsregexp'
         end)(),
         dependencies = {
-          -- `friendly-snippets` contains a variety of premade snippets.
-          --    See the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
           {
             'rafamadriz/friendly-snippets',
             config = function()
@@ -38,24 +35,57 @@ return {
       },
       'saadparwaiz1/cmp_luasnip',
       'folke/lazydev.nvim',
-
-      -- Adds other completion capabilities.
-      --  nvim-cmp does not ship with all sources by default. They are split
-      --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      {
+        "onsails/lspkind-nvim",
+        opts = {
+          mode = "symbol",
+          symbol_map = {
+            Array = "󰅪",
+            Boolean = "⊨",
+            Class = "󰌗",
+            Constructor = "",
+            Key = "󰌆",
+            Namespace = "󰅪",
+            Null = "NULL",
+            Number = "#",
+            Object = "󰀚",
+            Package = "󰏗",
+            Property = "",
+            Reference = "",
+            Snippet = "",
+            String = "󰀬",
+            TypeParameter = "󰊄",
+            Unit = "",
+          },
+          menu = {},
+        },
+      },
       { 'hrsh7th/cmp-buffer', lazy = true },
     },
     config = function()
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      local lspkind = require 'lspkind'
       luasnip.config.setup {}
 
       cmp.setup {
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
+          end,
+        },
+        formatting = {
+          fields = { "kind", "abbr", "menu" },
+          format = function(entry, vim_item)
+            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. (strings[1] or "") .. " "
+            kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+            return kind
           end,
         },
         -- completion = { completeopt = 'menu,menuone,noinsert' },
