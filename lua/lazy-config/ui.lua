@@ -30,22 +30,6 @@ return {
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-  {                  -- You can easily change to a different colorscheme.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function() end,
-    config = function()
-      require('tokyonight').setup({
-        styles = {
-          keywords = { italic = false, bold = true },
-          -- VertSplit = { fg = "muted", bg = "muted" },
-          -- EndOfBuffer = { fg = 'rose' },
-          -- Function = { italic = true },
-        },
-      })
-      vim.cmd 'colorscheme tokyonight-night'
-    end,
-  },
   {
     "rebelot/heirline.nvim",
     dependencies = { "Zeioth/heirline-components.nvim" },
@@ -127,5 +111,79 @@ return {
       heirline.load_colors(lib.hl.get_colors())
       heirline.setup(opts)
     end,
-  }
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    config = function()
+      -- local colors = require("catppuccin.palettes").get_palette "mocha"
+      -- colors.none = "NONE"
+      require("catppuccin").setup {
+        transparent_background = false,
+        styles = {                 -- Handles the styles of general hi groups (see `:h highlight-args`):
+          comments = { "italic" }, -- Change the style of comments
+          conditionals = { "italic" },
+          loops = {},
+          functions = {},
+          keywords = { "bold" },
+          strings = {},
+          variables = {},
+          numbers = {},
+          booleans = {},
+          properties = {},
+          types = {},
+          operators = {},
+        },
+        integrations = {
+          flash = true,
+          noice = true,
+          neotree = true,
+          treesitter = true,
+          which_key = true,
+          lsp_saga = true,
+          telescope = {
+            enabled = true,
+            style = "nvchad",
+          },
+          dropbar = {
+            enabled = true,
+            color_mode = true,
+          },
+          indent_blankline = {
+            enabled = true,
+            colored_indent_levels = true,
+          },
+          dap = true,
+          barbar = true,
+          aerial = true,
+          headlines = true,
+        },
+      }
+      vim.cmd "colorscheme catppuccin"
+    end,
+  },
 }
+
+-- {                  -- You can easily change to a different colorscheme.
+--   'folke/tokyonight.nvim',
+--   priority = 1000, -- Make sure to load this before all the other start plugins.
+--   init = function() end,
+--   config = function()
+--     require('tokyonight').setup({
+--       styles = {
+--         keywords = { italic = false, bold = true },
+--         -- VertSplit = { fg = "muted", bg = "muted" },
+--         -- EndOfBuffer = { fg = 'rose' },
+--         -- Function = { italic = true },
+--       },
+--     })
+--     -- vim.cmd 'colorscheme tokyonight-night'
+--   end,
+-- },
+--
+-- {
+--   "goolord/alpha-nvim",
+--   config = function ()
+--     require'alpha'.setup(require'alpha.themes.dashboard'.config)
+--   end
+-- },
