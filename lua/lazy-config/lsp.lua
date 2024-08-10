@@ -27,7 +27,7 @@ return {
       'nvimdev/lspsaga.nvim',
     },
     config = function()
-      --  This function gets run when an LSP attaches to a particular buffer.
+      --  This function gets run when an LSP attaches to a particular buffer.lspsaga
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
       --    function will be executed to configure the current buffer
@@ -60,9 +60,6 @@ return {
           map('<leader>ld', function()
             vim.diagnostic.open_float()
           end, 'Hover diagnostic')
-          -- map('<leader>lf', function()
-          --   vim.lsp.buf.format()
-          -- end, 'Format buffer')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
 
@@ -250,7 +247,14 @@ return {
       'nvim-tree/nvim-web-devicons',     -- optional
     },
     config = function()
+      vim.keymap.set('n', '<F7>', "<cmd>Lspsaga term_toggle<CR>", { desc = 'Toggle terminal' })
       require('lspsaga').setup {
+        finder = {
+          keys = {
+            toggle_or_open = '<CR>',
+            quit = { 'q', '<ESC>' },
+          }
+        },
         diagnostic = {
           keys = {
             quit = { 'q', '<ESC>' },
