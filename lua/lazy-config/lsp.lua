@@ -118,8 +118,8 @@ return {
           client.offset_encoding = 'utf-8'
         end,
       }
-      lspconfig['tinymist'].setup{}
-      lspconfig['marksman'].setup{}
+      lspconfig['tinymist'].setup {}
+      lspconfig['marksman'].setup {}
     end,
   },
 
@@ -132,6 +132,25 @@ return {
     'mrcjkb/haskell-tools.nvim',
     version = '^4', -- Recommended
     lazy = false,   -- This plugin is already lazy
+  },
+  {
+    'Julian/lean.nvim',
+    event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+
+    dependencies = {
+      'neovim/nvim-lspconfig',
+      'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
+    },
+
+    -- see details below for full configuration options
+    opts = {
+      lsp = {},
+      mappings = true,
+      infoview = {
+        width = 40,
+      }
+    }
   },
   {
     'wojciech-kulik/xcodebuild.nvim',
