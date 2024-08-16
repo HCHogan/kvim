@@ -68,6 +68,7 @@ require('lazy').setup({
   require 'lazy-config.treesitter',
   require 'lazy-config.cmp',
   require 'lazy-config.ui',
+  require 'lazy-config.debug',
 
   { import = 'lazy-config.plugins' },
 }, {

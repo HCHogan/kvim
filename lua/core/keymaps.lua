@@ -40,6 +40,7 @@ vim.keymap.set('n', "<Leader>w", "<Cmd>w<CR>", { desc = "Save" })
 vim.keymap.set('n', "<Leader>q", "<Cmd>confirm q<CR>", { desc = "Quit Window" })
 vim.keymap.set('n', "<Leader>Q", "<Cmd>confirm qall<CR>", { desc = "Exit" })
 vim.keymap.set('n', "<Leader>n", "<Cmd>enew<CR>", { desc = "New File" })
+vim.keymap.set('n', "<ESC>", "<Cmd>nohlsearch<CR>", { desc = "Clear Highlight" })
 
 -- set indent
 vim.keymap.set('n', '<leader>ui', function()
