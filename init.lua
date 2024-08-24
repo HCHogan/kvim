@@ -1,4 +1,4 @@
-if vim.g.vscode then return end
+if vim.g.vscode then return {} end
 
 require 'core.options'
 require 'core.keymaps'
@@ -12,4 +12,3 @@ if use_rocks == '1' then
 else
   require 'lazy-nvim'
 end
-

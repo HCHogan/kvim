@@ -16,7 +16,8 @@ return {
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
-    event = 'BufEnter',
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "LspInfo" },
     dependencies = {
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -120,17 +121,18 @@ return {
       }
       lspconfig['tinymist'].setup {}
       lspconfig['marksman'].setup {}
+      lspconfig['bashls'].setup {}
     end,
   },
 
   {
     'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
+    -- version = '^5', -- Recommended
     lazy = false,   -- This plugin is already lazy
   },
   {
     'mrcjkb/haskell-tools.nvim',
-    version = '^4', -- Recommended
+    -- version = '^4', -- Recommended
     lazy = false,   -- This plugin is already lazy
   },
   {
@@ -222,7 +224,7 @@ return {
   },
   {
     'zbirenbaum/copilot.lua',
-    event = 'VeryLazy',
+    event = 'BufReadPost',
     config = function()
       require('copilot').setup {
         panel = {
