@@ -187,3 +187,23 @@ return {
 --     require'alpha'.setup(require'alpha.themes.dashboard'.config)
 --   end
 -- },
+--
+-- {
+--   -- Calls `require('slimline').setup({})`
+--   "sschleemilch/slimline.nvim",
+--   opts = {
+--     spaces = {
+--       components = "",
+--       left = "",
+--       right = "",
+--     },
+--     sep = {
+--       hide = {
+--         first = true,
+--         last = true,
+--       },
+--       left = "",
+--       right = "",
+--     },
+--   }
+-- },
