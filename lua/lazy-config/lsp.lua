@@ -122,6 +122,7 @@ return {
       lspconfig['tinymist'].setup {}
       lspconfig['marksman'].setup {}
       lspconfig['bashls'].setup {}
+      lspconfig['svls'].setup {}
     end,
   },
 

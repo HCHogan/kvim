@@ -11,3 +11,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- We have no BH treesitter, so we have to make do with hs's treesitter
+vim.filetype.add({
+  extension = {
+    bs = "haskell",
+  }
+})
