@@ -1,4 +1,4 @@
-if vim.g.vscode then return {} end
+if vim.g.vscode ~= nil then return {} end
 
 require 'core.options'
 require 'core.keymaps'

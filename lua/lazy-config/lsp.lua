@@ -123,18 +123,29 @@ return {
       lspconfig['marksman'].setup {}
       lspconfig['bashls'].setup {}
       lspconfig['svls'].setup {}
+      lspconfig['matlab_ls'].setup {
+        single_file_support = true,
+        settings = {
+          MATLAB = {
+            indexWorkspace = false,
+            installPath = "",
+            matlabConnectionTiming = "onStart",
+            telemetry = true,
+          }
+        },
+      }
     end,
   },
 
   {
     'mrcjkb/rustaceanvim',
     -- version = '^5', -- Recommended
-    lazy = false,   -- This plugin is already lazy
+    lazy = false, -- This plugin is already lazy
   },
   {
     'mrcjkb/haskell-tools.nvim',
     -- version = '^4', -- Recommended
-    lazy = false,   -- This plugin is already lazy
+    lazy = false, -- This plugin is already lazy
   },
   {
     'Julian/lean.nvim',
