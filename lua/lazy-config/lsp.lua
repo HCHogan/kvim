@@ -123,6 +123,7 @@ return {
       lspconfig['marksman'].setup {}
       lspconfig['bashls'].setup {}
       lspconfig['svls'].setup {}
+      lspconfig['nil_ls'].setup {}
       lspconfig['matlab_ls'].setup {
         single_file_support = true,
         settings = {
