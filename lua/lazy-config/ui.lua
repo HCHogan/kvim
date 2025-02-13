@@ -21,13 +21,6 @@ return {
     event = 'UIEnter',
     opts = {},
   },
-  { -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    event = 'BufEnter',
-    main = 'ibl',
-    opts = {},
-  },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
   {
