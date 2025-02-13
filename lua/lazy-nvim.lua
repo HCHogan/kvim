@@ -62,7 +62,7 @@ require('lazy').setup({
     end,
   },
 
-  require 'lazy-config.finder',
+  -- require 'lazy-config.finder',
   require 'lazy-config.lint',
   require 'lazy-config.lsp',
   require 'lazy-config.treesitter',

@@ -111,10 +111,6 @@ return {
           treesitter = true,
           which_key = true,
           lsp_saga = true,
-          telescope = {
-            enabled = true,
-            style = "nvchad",
-          },
           dropbar = {
             enabled = true,
             color_mode = true,
@@ -127,6 +123,7 @@ return {
           barbar = true,
           aerial = true,
           headlines = true,
+          snacks = true,
         },
       }
       vim.cmd "colorscheme catppuccin"
