@@ -12,10 +12,17 @@ return {
       enabled = true,
       ui_select = true,
     },
+    input = {
+      enabled = true,
+    },
+    lazygit = {
+      enabled = true,
+    }
   },
   keys = {
-    { "<leader>f<space>", function() Snacks.picker.smart() end, desc = "Smart find files" },
-    { "<leader>ff",       function() Snacks.picker.files() end, desc = "Find files" },
-    { "<leader>fw",       function() Snacks.picker.grep() end,  desc = "Find files" },
+    { "<leader>f<space>", function() require('snacks').picker.smart() end, desc = "Smart find files" },
+    { "<leader>ff",       function() require('snacks').picker.files() end, desc = "Find files" },
+    { "<leader>fw",       function() require('snacks').picker.grep() end,  desc = "Grep files" },
+    { "<leader>g",        function() require('snacks').lazygit() end,      desc = "Lazygit" },
   }
 }
