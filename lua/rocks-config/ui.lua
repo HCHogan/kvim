@@ -87,7 +87,7 @@ return {
   },
   {
     'Bekaboo/dropbar.nvim',
-    event = 'UIEnter',
+    event = 'VeryLazy',
     opts = {},
   },
   { -- Add indentation guides even on blank lines

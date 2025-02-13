@@ -1,6 +1,7 @@
 return {
   {
     'romgrk/barbar.nvim',
+    event = 'BufReadPost',
     dependencies = {
       'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
@@ -14,18 +15,18 @@ return {
       insert_at_start = false,
       -- …etc.
     },
-    event = 'BufReadPost',
   },
   {
     'Bekaboo/dropbar.nvim',
-    event = 'UIEnter',
+    event = 'VeryLazy',
     opts = {},
   },
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { 'folke/todo-comments.nvim', event = 'VeryLazy', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
   {
     "rebelot/heirline.nvim",
     dependencies = { "Zeioth/heirline-components.nvim" },
+    event = "VeryLazy",
     opts = function()
       local lib = require "heirline-components.all"
       return {
