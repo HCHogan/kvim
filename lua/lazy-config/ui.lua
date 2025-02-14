@@ -102,48 +102,10 @@ return {
       vim.cmd "colorscheme catppuccin"
     end,
   },
+  { "nvzone/volt",              lazy = true },
+  { "nvzone/menu",              lazy = true },
+  {
+    "nvzone/minty",
+    cmd = { "Shades", "Huefy" },
+  },
 }
-
--- {                  -- You can easily change to a different colorscheme.
---   'folke/tokyonight.nvim',
---   priority = 1000, -- Make sure to load this before all the other start plugins.
---   init = function() end,
---   config = function()
---     require('tokyonight').setup({
---       styles = {
---         keywords = { italic = false, bold = true },
---         -- VertSplit = { fg = "muted", bg = "muted" },
---         -- EndOfBuffer = { fg = 'rose' },
---         -- Function = { italic = true },
---       },
---     })
---     -- vim.cmd 'colorscheme tokyonight-night'
---   end,
--- },
---
--- {
---   "goolord/alpha-nvim",
---   config = function ()
---     require'alpha'.setup(require'alpha.themes.dashboard'.config)
---   end
--- },
---
--- {
---   -- Calls `require('slimline').setup({})`
---   "sschleemilch/slimline.nvim",
---   opts = {
---     spaces = {
---       components = "",
---       left = "",
---       right = "",
---     },
---     sep = {
---       hide = {
---         first = true,
---         last = true,
---       },
---       left = "",
---       right = "",
---     },
---   }
--- },
