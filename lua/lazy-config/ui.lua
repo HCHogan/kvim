@@ -80,24 +80,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     config = function()
-      -- local colors = require("catppuccin.palettes").get_palette "mocha"
-      -- colors.none = "NONE"
       require("catppuccin").setup {
-        transparent_background = false,
-        styles = {                 -- Handles the styles of general hi groups (see `:h highlight-args`):
-          comments = { "italic" }, -- Change the style of comments
-          conditionals = { "italic" },
-          loops = {},
-          functions = {},
-          keywords = { "bold" },
-          strings = {},
-          variables = {},
-          numbers = {},
-          booleans = {},
-          properties = {},
-          types = {},
-          operators = {},
-        },
         integrations = {
           flash = true,
           noice = true,
@@ -105,18 +88,14 @@ return {
           treesitter = true,
           which_key = true,
           lsp_saga = true,
+          cmp = true,
           dropbar = {
             enabled = true,
             color_mode = true,
           },
-          indent_blankline = {
-            enabled = true,
-            colored_indent_levels = true,
-          },
           dap = true,
+          dap_ui = true,
           barbar = true,
-          aerial = true,
-          headlines = true,
           snacks = true,
         },
       }

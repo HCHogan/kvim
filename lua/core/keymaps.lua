@@ -31,6 +31,14 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-up>', function() require("smart-splits").resize_up() end,
+  { desc = 'Resize split up' })
+vim.keymap.set('n', '<C-down>', function() require("smart-splits").resize_down() end,
+  { desc = 'Resize split down' })
+vim.keymap.set('n', '<C-left>', function() require("smart-splits").resize_left() end,
+  { desc = 'Resize split left' })
+vim.keymap.set('n', '<C-right>', function() require("smart-splits").resize_right() end,
+  { desc = 'Resize split right' })
 
 -- builtin toggle comment
 vim.keymap.set('n', '<leader>/', 'gcc', { remap = true, desc = "Toggle comment line" })
@@ -41,6 +49,17 @@ vim.keymap.set('n', "<Leader>q", "<Cmd>confirm q<CR>", { desc = "Quit Window" })
 vim.keymap.set('n', "<Leader>Q", "<Cmd>confirm qall<CR>", { desc = "Exit" })
 vim.keymap.set('n', "<Leader>n", "<Cmd>enew<CR>", { desc = "New File" })
 vim.keymap.set('n', "<ESC>", "<Cmd>nohlsearch<CR>", { desc = "Clear Highlight" })
+
+-- debug
+vim.keymap.set('n', '<F9>', function() require('dap').toggle_breakpoint() end, { desc = "Toogle breakpoint" })
+vim.keymap.set('n', '<C-F9>', function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
+  { desc = "Conditional breakpoint" })
+vim.keymap.set('n', '<Leader>dr', function() require 'dap'.repl.open() end, { desc = "Repl open" })
+vim.keymap.set('n', '<S-F9>', function() require('dap').run_last() end, { desc = "Run last" })
+vim.keymap.set('n', '<F5>', function() require('dap').continue() end, { desc = "Continue" })
+vim.keymap.set('n', '<F10>', function() require('dap').step_over() end, { desc = "Step over" })
+vim.keymap.set('n', '<F11>', function() require('dap').step_into() end, { desc = "Step into" })
+vim.keymap.set('n', '<F12>', function() require('dap').step_out() end, { desc = "Step out" })
 
 -- set indent
 vim.keymap.set('n', '<leader>ui', function()

@@ -9,6 +9,7 @@ return {
       library = {
         -- Load luvit types when the `vim.uv` word is found
         { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+        { "nvim-dap-ui" },
       },
     },
   },
@@ -101,6 +102,7 @@ return {
       local lspconfig = require 'lspconfig'
       lspconfig['lua_ls'].setup {}
       lspconfig['basedpyright'].setup {}
+      lspconfig['neocmake'].setup {}
       lspconfig['clangd'].setup {
         -- cmd = { '/opt/homebrew/opt/llvm/bin/clangd' },
         capabilities = {
