@@ -1,2 +1,2 @@
-vim.cmd('Markview attach')
-vim.cmd('Markview enable')
+vim.cmd.Markview'attach'
+vim.cmd.Markview'enable'
