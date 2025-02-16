@@ -12,6 +12,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- fix cursor in windows terminal
+vim.api.nvim_create_autocmd("VimLeave", {
+  pattern = "*",
+  callback = function()
+    vim.o.guicursor = ""
+    vim.fn.chansend(vim.v.stderr, "\x1b[ q]")
+  end,
+})
+
 -- We have no BH treesitter, so we have to make do with hs's treesitter
 vim.filetype.add({
   extension = {
