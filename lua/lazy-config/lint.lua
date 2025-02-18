@@ -8,6 +8,7 @@ return {
         -- markdown = { 'markdownlint' },
         swift = { 'swiftlint' },
         python = { 'ruff' },
+        haskell = { 'hlint' }
       }
 
       -- Create autocommand which carries out the actual linting
@@ -41,10 +42,9 @@ return {
       formatters_by_ft = {
         swift = { 'swiftformat' },
         typst = { 'typstyle' },
-        markdown = { 'prettierd', 'prettier' },
-        nix = { 'alejandra'},
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        markdown = { 'prettierd', 'prettier', stop_after_first = true },
+        nix = { 'alejandra' },
       },
     },
   },
