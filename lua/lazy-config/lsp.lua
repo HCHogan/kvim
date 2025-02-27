@@ -133,7 +133,9 @@ return {
       }
     end,
   },
-
+  {
+    'mfussenegger/nvim-jdtls',
+  },
   {
     'mrcjkb/rustaceanvim',
     -- version = '^5', -- Recommended
