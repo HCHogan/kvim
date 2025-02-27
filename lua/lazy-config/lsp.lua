@@ -95,16 +95,12 @@ return {
         end,
       })
 
-      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-      -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
       -- :h lspconfig-all
       local lspconfig = require 'lspconfig'
       lspconfig['lua_ls'].setup {}
       lspconfig['basedpyright'].setup {}
       lspconfig['neocmake'].setup {}
       lspconfig['clangd'].setup {
-        -- cmd = { '/opt/homebrew/opt/llvm/bin/clangd' },
         capabilities = {
           offsetEncoding = 'utf-8',
         },
@@ -198,6 +194,7 @@ return {
       -- Function to check for .xcodeproj or .xcworkspace directories in the current working directory
       local function has_xcode_files()
         local current_dir = uv.cwd()
+        if not current_dir then return false end
         local dir = uv.fs_opendir(current_dir, nil, 100)
         if dir then
           while true do

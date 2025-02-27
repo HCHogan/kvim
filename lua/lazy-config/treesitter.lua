@@ -18,7 +18,6 @@ return {
         'vimdoc',
         'haskell',
         'rust',
-        'swift',
         'python',
         'yaml',
         'javascript',
