@@ -61,24 +61,6 @@ vim.keymap.set('n', '<F10>', function() require('dap').step_over() end, { desc =
 vim.keymap.set('n', '<F11>', function() require('dap').step_into() end, { desc = "Step into" })
 vim.keymap.set('n', '<F12>', function() require('dap').step_out() end, { desc = "Step out" })
 
--- Keyboard users
-vim.keymap.set("n", "<C-t>", function()
-  require("menu").open("default")
-end, {})
-
--- mouse users + nvimtree users!
-vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
-  require('menu.utils').delete_old_menus()
-
-  vim.cmd.exec '"normal! \\<RightMouse>"'
-
-  -- clicked buf
-  local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
-  local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
-
-  require("menu").open(options, { mouse = true })
-end, {})
-
 -- set indent
 vim.keymap.set('n', '<leader>ui', function()
   local input_avail, input = pcall(vim.fn.input, 'Set indent value (>0 expandtab, <=0 noexpandtab): ')
