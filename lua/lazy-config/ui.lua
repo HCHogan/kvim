@@ -97,6 +97,7 @@ return {
           dap_ui = true,
           barbar = true,
           snacks = true,
+          blink_cmp = true,
         },
       }
       vim.cmd "colorscheme catppuccin"

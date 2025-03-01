@@ -15,20 +15,11 @@ return {
   },
   { 'Bilal2453/luvit-meta', lazy = true },
   {
-    -- Main LSP Configuration
     'neovim/nvim-lspconfig',
-    event = { "BufReadPost", "BufNewFile" },
-    cmd = { "LspInfo" },
-    dependencies = {
-      -- Allows extra capabilities provided by nvim-cmp
-      'hrsh7th/cmp-nvim-lsp',
-      'nvimdev/lspsaga.nvim',
-    },
+    dependencies = { 'saghen/blink.cmp' },
+
+    -- example calling setup directly for each LSP
     config = function()
-      --  This function gets run when an LSP attaches to a particular buffer.lspsaga
-      --    That is to say, every time a new file is opened that is associated with
-      --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
-      --    function will be executed to configure the current buffer
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
@@ -94,12 +85,13 @@ return {
           end
         end,
       })
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local lspconfig = require('lspconfig')
 
-      -- :h lspconfig-all
-      local lspconfig = require 'lspconfig'
-      lspconfig['lua_ls'].setup {}
-      lspconfig['basedpyright'].setup {}
-      lspconfig['neocmake'].setup {}
+      lspconfig['lua_ls'].setup({ capabilities = capabilities })
+      lspconfig['lua_ls'].setup { capabilities = capabilities }
+      lspconfig['basedpyright'].setup { capabilities = capabilities }
+      lspconfig['neocmake'].setup { capabilities = capabilities }
       lspconfig['clangd'].setup {
         capabilities = {
           offsetEncoding = 'utf-8',
@@ -111,12 +103,13 @@ return {
           client.offset_encoding = 'utf-8'
         end,
       }
-      lspconfig['tinymist'].setup {}
-      lspconfig['marksman'].setup {}
-      lspconfig['bashls'].setup {}
-      lspconfig['svls'].setup {}
-      lspconfig['nil_ls'].setup {}
+      lspconfig['tinymist'].setup { capabilities = capabilities }
+      lspconfig['marksman'].setup { capabilities = capabilities }
+      lspconfig['bashls'].setup { capabilities = capabilities }
+      lspconfig['svls'].setup { capabilities = capabilities }
+      lspconfig['nil_ls'].setup { capabilities = capabilities }
       lspconfig['matlab_ls'].setup {
+        capabilities = capabilities,
         single_file_support = true,
         settings = {
           MATLAB = {
@@ -162,7 +155,6 @@ return {
     dependencies = {
       'neovim/nvim-lspconfig',
       'nvim-lua/plenary.nvim',
-      'hrsh7th/nvim-cmp',
     },
 
     -- see details below for full configuration options
