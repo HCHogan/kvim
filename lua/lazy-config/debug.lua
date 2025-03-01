@@ -1,6 +1,7 @@
 return {
   {
     "mfussenegger/nvim-dap",
+    event = "VeryLazy",
     config = function()
       local dap, dapui = require('dap'), require('dapui')
 
@@ -52,6 +53,7 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
+    event = "VeryLazy",
     config = function()
       require("dapui").setup()
     end,

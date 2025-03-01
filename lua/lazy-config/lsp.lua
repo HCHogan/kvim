@@ -16,6 +16,9 @@ return {
   { 'Bilal2453/luvit-meta', lazy = true },
   {
     'neovim/nvim-lspconfig',
+        event = { "BufReadPost", "BufNewFile" },
+    cmd = { "LspInfo" },
+
     dependencies = { 'saghen/blink.cmp' },
 
     -- example calling setup directly for each LSP

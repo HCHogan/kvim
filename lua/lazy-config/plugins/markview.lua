@@ -1,7 +1,7 @@
 return {
   {
     "OXY2DEV/markview.nvim",
-    lazy = false, -- Recommended
+    ft = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
     opts = {
       preview = {
         enable = true,
