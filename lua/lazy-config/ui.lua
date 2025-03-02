@@ -88,7 +88,6 @@ return {
           treesitter = true,
           which_key = true,
           lsp_saga = true,
-          cmp = true,
           dropbar = {
             enabled = true,
             color_mode = true,

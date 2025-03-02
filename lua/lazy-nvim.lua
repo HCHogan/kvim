@@ -31,7 +31,7 @@ require('lazy').setup({
   },
   {                     -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+    event = 'VeryLazy', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
       require('which-key').setup()
 
@@ -48,7 +48,6 @@ require('lazy').setup({
     end,
   },
 
-  -- require 'lazy-config.finder',
   require 'lazy-config.lint',
   require 'lazy-config.lsp',
   require 'lazy-config.treesitter',

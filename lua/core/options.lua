@@ -78,16 +78,10 @@ vim.opt.laststatus = 3
 
 vim.o.fillchars = 'eob: '
 
-vim.diagnostic.config({
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = icons.DiagnosticError,
-      [vim.diagnostic.severity.HINT] = icons.DiagnosticHint,
-      [vim.diagnostic.severity.WARN] = icons.DiagnosticWarn,
-      [vim.diagnostic.severity.INFO] = icons.DiagnosticInfo,
-    },
-  }
-})
+vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
+vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
+vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
 
 if vim.g.neovide then
   local neovide_transparency = 0.75
