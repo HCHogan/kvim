@@ -81,6 +81,7 @@ return {
     name = "catppuccin",
     config = function()
       require("catppuccin").setup {
+        term_colors = true,
         integrations = {
           flash = true,
           noice = true,

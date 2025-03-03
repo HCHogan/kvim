@@ -16,7 +16,7 @@ return {
   { 'Bilal2453/luvit-meta', lazy = true },
   {
     'neovim/nvim-lspconfig',
-        event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     cmd = { "LspInfo" },
 
     dependencies = { 'saghen/blink.cmp' },
@@ -284,7 +284,6 @@ return {
       'nvim-tree/nvim-web-devicons',     -- optional
     },
     config = function()
-      vim.keymap.set('n', '<F7>', "<cmd>Lspsaga term_toggle<CR>", { desc = 'Toggle terminal' })
       require('lspsaga').setup {
         finder = {
           keys = {

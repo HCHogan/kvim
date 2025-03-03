@@ -21,6 +21,9 @@ return {
     indent = {
       enabled = true,
     },
+    terminal = {
+      enabled = true,
+    }
   },
   keys = {
     { "<leader>f<space>", function() require('snacks').picker.smart() end, desc = "Smart find files" },

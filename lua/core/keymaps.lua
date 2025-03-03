@@ -13,6 +13,13 @@ vim.keymap.set('n', 'J', '5j')
 vim.keymap.set('v', 'J', '5j')
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>')
 
+vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm size=10 direction=horizontal<CR>',
+  { desc = 'Toggle terminal horizontal' })
+vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<CR>', { desc = 'Toggle terminal float' })
+vim.keymap.set('n', '<F7>', '<cmd>execute v:count . "ToggleTerm"<CR>', { desc = 'Toggle terminal' })
+vim.keymap.set('t', '<F7>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+vim.keymap.set('i', '<F7>', '<Esc><Cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+
 vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'NeoTree toggle' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
