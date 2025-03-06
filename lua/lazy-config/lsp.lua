@@ -91,7 +91,6 @@ return {
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local lspconfig = require('lspconfig')
 
-      lspconfig['lua_ls'].setup({ capabilities = capabilities })
       lspconfig['lua_ls'].setup { capabilities = capabilities }
       lspconfig['basedpyright'].setup { capabilities = capabilities }
       lspconfig['neocmake'].setup { capabilities = capabilities }
@@ -107,7 +106,7 @@ return {
         end,
       }
       lspconfig['tinymist'].setup { capabilities = capabilities }
-      lspconfig['marksman'].setup { capabilities = capabilities }
+      -- lspconfig['marksman'].setup { capabilities = capabilities }
       lspconfig['bashls'].setup { capabilities = capabilities }
       lspconfig['svls'].setup { capabilities = capabilities }
       lspconfig['nil_ls'].setup { capabilities = capabilities }

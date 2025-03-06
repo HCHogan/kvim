@@ -13,7 +13,6 @@ return {
       -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
       animation = false,
       insert_at_start = false,
-      -- …etc.
     },
   },
   {
@@ -30,24 +29,6 @@ return {
     opts = function()
       local lib = require "heirline-components.all"
       return {
-        opts = {
-          disable_winbar_cb = function(args) -- We do this to avoid showing it on the greeter.
-            local is_disabled = not require("heirline-components.buffer").is_valid(args.buf) or
-                lib.condition.buffer_matches({
-                  buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
-                  filetype = { "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
-                }, args.buf)
-            return is_disabled
-          end,
-          disable_statusline_cb = function(args)
-            local is_disabled = not require("heirline-components.buffer").is_valid(args.buf) or
-                lib.condition.buffer_matches({
-                  buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
-                  filetype = { "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial", "avante" },
-                }, args.buf)
-            return is_disabled
-          end,
-        },
         statusline = { -- UI statusbar
           hl = { fg = "fg", bg = "bg" },
           lib.component.mode(),
