@@ -122,6 +122,12 @@ return {
           }
         },
       }
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "markdown", "txt" },
+        callback = function()
+          require("lspconfig").harper_ls.setup { capabilities = capabilities }
+        end,
+      })
     end,
   },
   {
