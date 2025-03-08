@@ -122,7 +122,7 @@ return {
           }
         },
       }
-      lspconfig['harper_ls'].setup { capabilities = capabilities }
+      -- lspconfig['harper_ls'].setup { capabilities = capabilities }
     end,
   },
   {
