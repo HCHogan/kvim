@@ -1,5 +1,6 @@
 return {
   "JuanZoran/Trans.nvim",
+  enabled = false,
   dependencies = {
     "kkharji/sqlite.lua",
   },
