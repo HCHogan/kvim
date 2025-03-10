@@ -12,6 +12,10 @@ vim.keymap.set('n', '<leader>q', '<cmd>q<CR>')
 vim.keymap.set('n', 'J', '5j')
 vim.keymap.set('v', 'J', '5j')
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>')
+vim.keymap.set('n', 'j', 'gj')
+vim.keymap.set('n', 'k', 'gk')
+vim.keymap.set('x', 'j', 'gj')
+vim.keymap.set('x', 'k', 'gk')
 
 vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm size=10 direction=horizontal<CR>',
   { desc = 'Toggle terminal horizontal' })
