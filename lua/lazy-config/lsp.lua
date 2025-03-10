@@ -132,6 +132,57 @@ return {
     'mrcjkb/rustaceanvim',
     -- version = '^5', -- Recommended
     lazy = false, -- This plugin is already lazy
+    config = function()
+      local cfg = {
+        -- Plugin configuration
+        tools = {
+        },
+        -- LSP configuration
+        server = {
+          default_settings = {
+            -- rust-analyzer language server configuration
+            ['rust-analyzer'] = {
+              cargo = {
+                extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
+                extraArgs = { "--profile", "rust-analyzer" },
+              },
+              checkOnSave = {
+                command = "clippy",
+                allTargets = false,
+                extraArgs = { "--no-deps" },
+                allFeatures = true,
+              },
+              -- inlayHints = {
+              -- reborrowHints = {
+              --   enable = "mutable",
+              -- },
+              -- lifetimeElisionHints = {
+              --   enable = "skip_trivial",
+              -- },
+              -- closureReturnTypeHints = {
+              --   enable = "with_block",
+              -- },
+              -- implicitDrops = {
+              --   enable = "always",
+              -- },
+              -- discriminantHints = {
+              --   enable = "always",
+              -- },
+              -- expressionAdjustmentHints = {
+              --   enable = "always",
+              --   hideOutsideUnsafe = false,
+              --   mode = "prefix",
+              -- },
+              -- },
+            },
+          },
+        },
+        -- DAP configuration
+        dap = {
+        },
+      }
+      vim.g.rustaceanvim = cfg
+    end,
   },
   {
     'mrcjkb/haskell-tools.nvim',
