@@ -15,7 +15,6 @@ local icons = require('core.icons').icons
 require('lazy').setup({
   {
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-    event = 'VeryLazy',
   },
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
