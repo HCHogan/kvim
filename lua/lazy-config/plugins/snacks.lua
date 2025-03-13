@@ -60,6 +60,7 @@ return {
     { "<leader>f<space>", function() require('snacks').picker.smart() end, desc = "Smart find files" },
     { "<leader>ff",       function() require('snacks').picker.files() end, desc = "Find files" },
     { "<leader>fw",       function() require('snacks').picker.grep() end,  desc = "Grep files" },
+    { "<leader>fr",       function() require('snacks').picker.recent() end,desc = "Recent files"},
     { "<leader>g",        function() require('snacks').lazygit() end,      desc = "Lazygit" },
   }
 }
