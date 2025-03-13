@@ -4,26 +4,6 @@ return {
     build = ':TSUpdate',
     event = "VeryLazy",
     opts = {
-      ensure_installed = {
-        'bash',
-        'c',
-        'diff',
-        'html',
-        'lua',
-        'luadoc',
-        'markdown',
-        'markdown_inline',
-        'query',
-        'vim',
-        'vimdoc',
-        'haskell',
-        'rust',
-        'python',
-        'yaml',
-        'javascript',
-        'typescript',
-        "css",
-      },
       auto_install = true,
       highlight = {
         enable = true,
@@ -49,6 +29,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     lazy = true,
+    event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
       textobjects = {

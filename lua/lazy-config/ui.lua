@@ -70,14 +70,17 @@ return {
           treesitter = true,
           which_key = true,
           lsp_saga = true,
+          gitsigns = true,
           dropbar = {
             enabled = true,
-            color_mode = true,
+            color_mode = false,
           },
           dap = true,
           dap_ui = true,
           barbar = true,
-          snacks = true,
+          snacks = {
+            enabled = true,
+          },
           blink_cmp = true,
         },
       }
