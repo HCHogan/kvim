@@ -42,7 +42,7 @@ return {
           map('[d', '<CMD>Lspsaga diagnostic_jump_prev<CR>', 'jump to previous diagnostics')
           map(']d', '<CMD>Lspsaga diagnostic_jump_next<CR>', 'jump to next diagnostics')
 
-          map('K', '<CMD>Lspsaga hover_doc<CR>', 'show doc')
+          map('K', function() vim.lsp.buf.hover() end, 'show doc') -- use noice here
 
           map('<leader>lc', '<cmd>Lspsaga incoming_calls<CR>', 'Incoming calls')
           map('<leader>lC', '<cmd>Lspsaga outgoing_calls<CR>', 'Outgoing calls')
