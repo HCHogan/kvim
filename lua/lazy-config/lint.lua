@@ -37,12 +37,13 @@ return {
       },
     },
     opts = {
-      notify_on_error = false,
+      notify_on_error = true,
       format_on_save = false,
       formatters_by_ft = {
         swift = { 'swiftformat' },
         typst = { 'typstyle' },
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'biome' },
+        css = { 'biome' },
         markdown = { 'prettierd', 'prettier', stop_after_first = true },
         nix = { 'alejandra' },
       },

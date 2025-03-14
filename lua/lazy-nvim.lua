@@ -10,43 +10,7 @@ if not vim.uv.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-local icons = require('core.icons').icons
-
 require('lazy').setup({
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    event = "VeryLazy",
-    opts = {
-      signs = {
-        add = { text = icons.GitSign },
-        change = { text = icons.GitSign },
-        delete = { text = icons.GitSign },
-        topdelete = { text = icons.GitSign },
-        changedelete = { text = icons.GitSign },
-        untracked = { text = icons.GitSign },
-      },
-      current_line_blame = true,
-    },
-  },
-  {                     -- Useful plugin to show you pending keybinds.
-    'folke/which-key.nvim',
-    event = 'VeryLazy', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
-
-      -- Document existing key chains
-      require('which-key').add {
-        { '<leader>c', group = '[C]ode' },
-        { '<leader>d', group = '[D]ocument' },
-        { '<leader>r', group = '[R]ename' },
-        { '<leader>s', group = '[S]earch' },
-        { '<leader>w', group = '[W]orkspace' },
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-      }
-    end,
-  },
-
   require 'lazy-config.lint',
   require 'lazy-config.lsp',
   require 'lazy-config.treesitter',
@@ -61,7 +25,7 @@ require('lazy').setup({
     border = 'rounded',
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
+    icons = {
       cmd = '⌘',
       config = '🛠',
       event = '📅',

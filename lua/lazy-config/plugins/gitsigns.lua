@@ -2,10 +2,22 @@
 -- NOTE: gitsigns is already included in init.lua but contains only the base
 -- config. This will add also the recommended keymaps.
 
+local icons = require('core.icons').icons
+
 return {
   {
     'lewis6991/gitsigns.nvim',
+    event = 'VeryLazy',
     opts = {
+      signs = {
+        add = { text = icons.GitSign },
+        change = { text = icons.GitSign },
+        delete = { text = icons.GitSign },
+        topdelete = { text = icons.GitSign },
+        changedelete = { text = icons.GitSign },
+        untracked = { text = icons.GitSign },
+      },
+      current_line_blame = true,
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 
