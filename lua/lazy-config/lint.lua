@@ -1,4 +1,8 @@
 return {
+  -- {
+  --   "nvimdev/guard.nvim",
+  --   event = { "BufReadPre", "BufNewFile", "BufWritePre" },
+  -- },
   { -- Linting
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'BufNewFile' },
