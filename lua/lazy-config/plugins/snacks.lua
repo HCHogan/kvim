@@ -54,6 +54,11 @@ return {
     },
     terminal = {
       enabled = true,
+      win = {
+        height = 10,
+        position = "bottom",
+        style = "minimal",
+      }
     }
   },
   keys = {

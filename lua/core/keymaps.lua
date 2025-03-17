@@ -17,14 +17,10 @@ vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('x', 'j', 'gj')
 vim.keymap.set('x', 'k', 'gk')
 
-vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm size=10 direction=horizontal<CR>',
-  { desc = 'Toggle terminal horizontal' })
-vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<CR>', { desc = 'Toggle terminal float' })
-vim.keymap.set('n', '<F7>', '<cmd>execute v:count . "ToggleTerm"<CR>', { desc = 'Toggle terminal' })
-vim.keymap.set('t', '<F7>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
-vim.keymap.set('i', '<F7>', '<Esc><Cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
-
-vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'NeoTree toggle' })
+vim.keymap.set('n', '<M-n>', function() require('snacks').terminal() end, {desc = 'Toggle terminal'})
+vim.keymap.set('t', '<M-n>', function() require('snacks').terminal() end, {desc = 'Toggle terminal'})
+vim.keymap.set('n', '<leader>th', function() require('snacks').terminal() end, {desc = 'Toggle terminal'})
+vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', {desc = 'Toggle file tree'})
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
