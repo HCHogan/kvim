@@ -188,6 +188,7 @@ return {
   },
   {
     "ray-x/go.nvim",
+    enabled = false,
     dependencies = { -- optional packages
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
