@@ -6,5 +6,6 @@ return {
     bg_theme = "sea",
     code_font_family = "Recursive",
     has_line_number = true,
+    watermark = "",
   }
 }
