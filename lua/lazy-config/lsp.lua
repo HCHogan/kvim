@@ -1,128 +1,6 @@
 -- LSP Plugins
 return {
   {
-    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-    -- used for completion, annotations and signatures of Neovim apis
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        { "nvim-dap-ui" },
-      },
-    },
-  },
-  {
-    'neovim/nvim-lspconfig',
-    event = { "BufReadPost", "BufNewFile" },
-    cmd = { "LspInfo" },
-
-    dependencies = { 'saghen/blink.cmp' },
-
-    -- example calling setup directly for each LSP
-    config = function()
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
-        callback = function(event)
-          -- In this case, we create a function that lets us more easily define mappings specific
-          -- for LSP related items. It sets the mode, buffer and description for us each time.
-          local map = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-          end
-
-          map('gd', '<CMD>Lspsaga goto_definition<CR>', 'goto definition')
-          map('gi', '<CMD>Lspsaga finder imp<CR>', 'goto implementation')
-          map('gr', '<cmd>Lspsaga finder<CR>', 'Search references')
-          map('gp', '<cmd>Lspsaga peek_definition<CR>', 'Peek definition')
-          map('gtp', '<cmd>Lspsaga peek_type_definition<CR>', 'Peek type definition')
-          map('gtd', '<cmd>Lspsaga goto_type_definition<CR>', 'Type definition')
-
-          map('[d', '<CMD>Lspsaga diagnostic_jump_prev<CR>', 'jump to previous diagnostics')
-          map(']d', '<CMD>Lspsaga diagnostic_jump_next<CR>', 'jump to next diagnostics')
-
-          map('K', function() vim.lsp.buf.hover() end, 'show doc') -- use noice here
-
-          map('<leader>lc', '<cmd>Lspsaga incoming_calls<CR>', 'Incoming calls')
-          map('<leader>lC', '<cmd>Lspsaga outgoing_calls<CR>', 'Outgoing calls')
-          map('<leader>la', '<cmd>Lspsaga code_action<CR>', 'LSP code action')
-          map('<leader>lS', '<cmd>Lspsaga outline<CR>', 'Symbols outline')
-          map('<leader>lr', '<cmd>Lspsaga rename<CR>', 'Symbols rename')
-          map('<leader>ld', function()
-            vim.diagnostic.open_float()
-          end, 'Hover diagnostic')
-
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-            map('<leader>lH', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-            end, 'Toggle Inlay Hints')
-          end
-
-          -- The following two autocommands are used to highlight references of the
-          -- word under your cursor when your cursor rests there for a little while.
-          --    See `:help CursorHold` for information about when this is executed
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-            local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
-            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-              buffer = event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.document_highlight,
-            })
-
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.clear_references,
-            })
-
-            vim.api.nvim_create_autocmd('LspDetach', {
-              group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
-              callback = function(event2)
-                vim.lsp.buf.clear_references()
-                vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
-              end,
-            })
-          end
-        end,
-      })
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local lspconfig = require('lspconfig')
-
-      lspconfig['lua_ls'].setup { capabilities = capabilities }
-      lspconfig['basedpyright'].setup { capabilities = capabilities }
-      lspconfig['neocmake'].setup { capabilities = capabilities }
-      lspconfig['clangd'].setup {
-        capabilities = {
-          offsetEncoding = 'utf-8',
-        },
-      }
-      lspconfig['sourcekit'].setup {
-        filetypes = { 'swift' },
-        on_init = function(client)
-          client.offset_encoding = 'utf-8'
-        end,
-      }
-      lspconfig['tinymist'].setup { capabilities = capabilities }
-      -- lspconfig['marksman'].setup { capabilities = capabilities }
-      lspconfig['bashls'].setup { capabilities = capabilities }
-      lspconfig['svls'].setup { capabilities = capabilities }
-      lspconfig['nil_ls'].setup { capabilities = capabilities }
-      lspconfig['matlab_ls'].setup {
-        capabilities = capabilities,
-        single_file_support = true,
-        settings = {
-          MATLAB = {
-            indexWorkspace = false,
-            installPath = "",
-            matlabConnectionTiming = "onStart",
-            telemetry = true,
-          }
-        },
-      }
-      -- lspconfig['harper_ls'].setup { capabilities = capabilities }
-    end,
-  },
-  {
     'mfussenegger/nvim-jdtls',
   },
   {
@@ -186,38 +64,24 @@ return {
     -- version = '^4', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
-  {
-    "ray-x/go.nvim",
-    enabled = false,
-    dependencies = { -- optional packages
-      "neovim/nvim-lspconfig",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("go").setup()
-    end,
-    event = { "CmdlineEnter" },
-    ft = { "go", 'gomod' },
-    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-  },
-  {
-    'Julian/lean.nvim',
-    event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
-
-    dependencies = {
-      'neovim/nvim-lspconfig',
-      'nvim-lua/plenary.nvim',
-    },
-
-    -- see details below for full configuration options
-    opts = {
-      lsp = {},
-      mappings = true,
-      infoview = {
-        width = 40,
-      }
-    }
-  },
+  -- {
+  --   'Julian/lean.nvim',
+  --   event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+  --
+  --   dependencies = {
+  --     'neovim/nvim-lspconfig',
+  --     'nvim-lua/plenary.nvim',
+  --   },
+  --
+  --   -- see details below for full configuration options
+  --   opts = {
+  --     lsp = {},
+  --     mappings = true,
+  --     infoview = {
+  --       width = 40,
+  --     }
+  --   }
+  -- },
   {
     'wojciech-kulik/xcodebuild.nvim',
     lazy = true,
