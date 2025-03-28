@@ -86,8 +86,6 @@ for _, lsp in ipairs(lsps) do
   end
 end
 
--- lspconfig['lua_ls'].setup { capabilities = capabilities }
--- lspconfig['basedpyright'].setup { capabilities = capabilities }
 -- lspconfig['neocmake'].setup { capabilities = capabilities }
 -- lspconfig['sourcekit'].setup {
 --   filetypes = { 'swift' },
