@@ -78,7 +78,7 @@ vim.lsp.config("*", {
   capabilities = capabilities
 })
 
-local lsps = { "clangd", "basedpyright", "luals" }
+local lsps = { "clangd", "basedpyright", "luals", "bashls", "nil", "neocmake", "sourcekit" }
 
 for _, lsp in ipairs(lsps) do
   if vim.fn.executable(vim.lsp.config[lsp].cmd[1]) == 1 then
@@ -86,7 +86,6 @@ for _, lsp in ipairs(lsps) do
   end
 end
 
--- lspconfig['neocmake'].setup { capabilities = capabilities }
 -- lspconfig['sourcekit'].setup {
 --   filetypes = { 'swift' },
 --   on_init = function(client)
@@ -97,7 +96,6 @@ end
 -- -- lspconfig['marksman'].setup { capabilities = capabilities }
 -- lspconfig['bashls'].setup { capabilities = capabilities }
 -- lspconfig['svls'].setup { capabilities = capabilities }
--- lspconfig['nil_ls'].setup { capabilities = capabilities }
 -- lspconfig['matlab_ls'].setup {
 --   capabilities = capabilities,
 --   single_file_support = true,
