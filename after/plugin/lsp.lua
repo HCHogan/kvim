@@ -86,12 +86,6 @@ for _, lsp in ipairs(lsps) do
   end
 end
 
--- lspconfig['sourcekit'].setup {
---   filetypes = { 'swift' },
---   on_init = function(client)
---     client.offset_encoding = 'utf-8'
---   end,
--- }
 -- lspconfig['tinymist'].setup { capabilities = capabilities }
 -- -- lspconfig['marksman'].setup { capabilities = capabilities }
 -- lspconfig['bashls'].setup { capabilities = capabilities }
