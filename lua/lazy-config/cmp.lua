@@ -40,7 +40,7 @@ end
 return {
   {
     'saghen/blink.cmp',
-    event = "VeryLazy",
+    event = "BufReadPost",
     -- optional: provides snippets for the snippet source
     dependencies = {
       'rafamadriz/friendly-snippets',
