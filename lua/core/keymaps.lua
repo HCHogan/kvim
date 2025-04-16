@@ -56,6 +56,7 @@ vim.keymap.set('n', "<Leader>q", "<Cmd>confirm q<CR>", { desc = "Quit Window" })
 vim.keymap.set('n', "<Leader>Q", "<Cmd>confirm qall<CR>", { desc = "Exit" })
 vim.keymap.set('n', "<Leader>n", "<Cmd>enew<CR>", { desc = "New File" })
 vim.keymap.set('n', "<ESC>", "<Cmd>nohlsearch<CR>", { desc = "Clear Highlight" })
+vim.keymap.set("n", "<leader>lf", "<cmd>Guard fmt<CR>")
 
 -- debug
 vim.keymap.set('n', '<F9>', function() require('dap').toggle_breakpoint() end, { desc = "Toogle breakpoint" })

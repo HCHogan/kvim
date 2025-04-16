@@ -11,7 +11,6 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  require 'lazy-config.lint',
   require 'lazy-config.lsp',
   require 'lazy-config.treesitter',
   require 'lazy-config.cmp',

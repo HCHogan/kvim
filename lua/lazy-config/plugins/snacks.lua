@@ -59,7 +59,10 @@ return {
         position = "bottom",
         style = "minimal",
       }
-    }
+    },
+    words = {
+      enabled = true,
+    },
   },
   keys = {
     { "<leader>f<space>", function() require('snacks').picker.smart() end, desc = "Smart find files" },
