@@ -85,13 +85,13 @@ vim.diagnostic.config {
     format = function(diagnostic)
       local severity = diagnostic.severity
       if severity == vim.diagnostic.severity.ERROR then
-        return icons.DiagnosticsError .. ' ' .. diagnostic.message
+        return icons.DiagnosticError .. ' ' .. diagnostic.message
       elseif severity == vim.diagnostic.severity.WARN then
-        return icons.DiagnosticsWarn .. ' ' .. diagnostic.message
+        return icons.DiagnosticWarn .. ' ' .. diagnostic.message
       elseif severity == vim.diagnostic.severity.INFO then
-        return icons.DiagnosticsInfo .. ' ' .. diagnostic.message
+        return icons.DiagnosticInfo .. ' ' .. diagnostic.message
       elseif severity == vim.diagnostic.severity.HINT then
-        return icons.DiagnosticsHint .. ' ' .. diagnostic.message
+        return icons.DiagnosticHint .. ' ' .. diagnostic.message
       end
     end,
   },
@@ -100,10 +100,10 @@ vim.diagnostic.config {
   underline = { severity = { min = vim.diagnostic.severity.WARN, max = vim.diagnostic.severity.ERROR } },
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = icons.DiagnosticsError,
-      [vim.diagnostic.severity.WARN] = icons.DiagnosticsWarn,
-      [vim.diagnostic.severity.INFO] = icons.DiagnosticsInfo,
-      [vim.diagnostic.severity.HINT] = icons.DiagnosticsHint,
+      [vim.diagnostic.severity.ERROR] = icons.DiagnosticError,
+      [vim.diagnostic.severity.WARN] = icons.DiagnosticWarn,
+      [vim.diagnostic.severity.INFO] = icons.DiagnosticInfo,
+      [vim.diagnostic.severity.HINT] = icons.DiagnosticHint,
     },
   },
 }
