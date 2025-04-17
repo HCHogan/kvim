@@ -80,7 +80,7 @@ vim.diagnostic.config {
   virtual_lines = false,
   virtual_text = {
     prefix = '',
-    spacing = 4,
+    -- spacing = 4,
     source = 'if_many',
     format = function(diagnostic)
       local severity = diagnostic.severity
