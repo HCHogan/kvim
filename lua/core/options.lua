@@ -77,16 +77,33 @@ vim.opt.laststatus = 3
 vim.o.fillchars = 'eob: '
 
 vim.diagnostic.config {
-  virtual_lines = true,
+  virtual_lines = false,
+  virtual_text = {
+    prefix = '',
+    spacing = 4,
+    source = 'if_many',
+    format = function(diagnostic)
+      local severity = diagnostic.severity
+      if severity == vim.diagnostic.severity.ERROR then
+        return icons.DiagnosticsError .. ' ' .. diagnostic.message
+      elseif severity == vim.diagnostic.severity.WARN then
+        return icons.DiagnosticsWarn .. ' ' .. diagnostic.message
+      elseif severity == vim.diagnostic.severity.INFO then
+        return icons.DiagnosticsInfo .. ' ' .. diagnostic.message
+      elseif severity == vim.diagnostic.severity.HINT then
+        return icons.DiagnosticsHint .. ' ' .. diagnostic.message
+      end
+    end,
+  },
   severity_sort = true,
   float = { border = 'rounded', source = 'if_many' },
-  underline = { severity = vim.diagnostic.severity.ERROR },
+  underline = { severity = { min = vim.diagnostic.severity.WARN, max = vim.diagnostic.severity.ERROR } },
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = '󰅚',
-      [vim.diagnostic.severity.WARN] = '󰀪',
-      [vim.diagnostic.severity.INFO] = '󰋽',
-      [vim.diagnostic.severity.HINT] = '󰌶',
+      [vim.diagnostic.severity.ERROR] = icons.DiagnosticsError,
+      [vim.diagnostic.severity.WARN] = icons.DiagnosticsWarn,
+      [vim.diagnostic.severity.INFO] = icons.DiagnosticsInfo,
+      [vim.diagnostic.severity.HINT] = icons.DiagnosticsHint,
     },
   },
 }
