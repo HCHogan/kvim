@@ -100,10 +100,10 @@ vim.diagnostic.config {
   underline = { severity = { min = vim.diagnostic.severity.WARN, max = vim.diagnostic.severity.ERROR } },
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = icons.DiagnosticError,
-      [vim.diagnostic.severity.WARN] = icons.DiagnosticWarn,
-      [vim.diagnostic.severity.INFO] = icons.DiagnosticInfo,
-      [vim.diagnostic.severity.HINT] = icons.DiagnosticHint,
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.INFO] = '',
+      [vim.diagnostic.severity.HINT] = '',
     },
   },
 }
