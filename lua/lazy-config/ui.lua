@@ -64,8 +64,15 @@ return {
     config = function()
       require('kanso').setup {
         compile = true,
+        transparent = false,
         keywordStyle = { italic = false, bold = true },
         theme = "zen",
+        -- overrides = function(colors)
+        --   return {
+        --     WinSeparator = { fg = colors.theme.ui.ident_line, bold = false },
+        --     SnacksPickerTitle = { fg = colors.theme.ui.fg, bold = false },
+        --   }
+        -- end,
       }
       vim.cmd("colorscheme kanso")
     end
