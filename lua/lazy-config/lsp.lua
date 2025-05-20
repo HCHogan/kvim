@@ -64,6 +64,19 @@ return {
     -- version = '^4', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
+  {
+    'moonbit-community/moonbit.nvim',
+    ft = { 'moonbit' },
+    opts = {
+      treesitter = {
+        enabled = true,
+        auto_install = true
+      },
+      lsp = {
+        capabilities = vim.lsp.protocol.make_client_capabilities(),
+      }
+    },
+  },
   -- {
   --   'Julian/lean.nvim',
   --   event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
