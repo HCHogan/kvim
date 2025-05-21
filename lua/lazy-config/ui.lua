@@ -63,54 +63,15 @@ return {
     priority = 1000,
     config = function()
       require('kanso').setup {
-        compile = true,
         transparent = false,
         keywordStyle = { italic = false, bold = true },
-        theme = "zen",
         overrides = function(colors)
           return {
-            WinSeparator = { fg = colors.theme.ui.ident_line, bold = false },
-            SnacksPickerTitle = { fg = colors.theme.ui.fg, bold = false },
+            WinSeparator = { fg = colors.palette.inkBlack2, bold = false },
           }
         end,
       }
-      vim.cmd("colorscheme kanso")
+      vim.cmd("colorscheme kanso-ink")
     end
   },
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   config = function()
-  --     require("catppuccin").setup {
-  --       term_colors = true,
-  --       integrations = {
-  --         flash = true,
-  --         noice = true,
-  --         neotree = true,
-  --         treesitter = true,
-  --         which_key = true,
-  --         lsp_saga = true,
-  --         gitsigns = true,
-  --         dropbar = {
-  --           enabled = true,
-  --           color_mode = false,
-  --         },
-  --         dap = true,
-  --         dap_ui = true,
-  --         barbar = true,
-  --         snacks = {
-  --           enabled = true,
-  --         },
-  --         blink_cmp = true,
-  --       },
-  --     }
-  --     vim.cmd "colorscheme catppuccin"
-  --   end,
-  -- },
-  -- { "nvzone/volt",              lazy = true },
-  -- { "nvzone/menu",              lazy = true },
-  -- {
-  --   "nvzone/minty",
-  --   cmd = { "Shades", "Huefy" },
-  -- },
 }
