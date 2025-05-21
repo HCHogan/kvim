@@ -12,6 +12,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   require 'lazy-config.lsp',
+  require 'lazy-config.lint',
   require 'lazy-config.treesitter',
   require 'lazy-config.cmp',
   require 'lazy-config.ui',
