@@ -4,8 +4,10 @@ return {
   event = "VeryLazy",
   opts = {
     save_path = "~/Pictures",
-    bg_theme = "sea",
-    code_font_family = "RecMonoLinear Nerd Font Mono",
+    bg_theme = "bamboo",
+    bg_x_padding = 10,
+    bg_y_padding = 10,
+    code_font_family = "Recursive",
     has_line_number = true,
     watermark = "",
   }
