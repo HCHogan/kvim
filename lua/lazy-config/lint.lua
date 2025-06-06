@@ -42,10 +42,14 @@ return {
       formatters_by_ft = {
         swift = { 'swiftformat' },
         typst = { 'typstyle' },
+
         json = { 'biome' },
+        html = { 'biome' },
         css = { 'biome' },
+        markdown = { 'biome' },
+
         haskell = { 'ormolu' },
-        markdown = { 'prettierd', 'prettier', stop_after_first = true },
+        python = { 'ruff' },
         nix = { 'alejandra' },
       },
     },
