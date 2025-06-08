@@ -6,7 +6,7 @@
 
 return {
   cmd = { 'sourcekit-lsp' },
-  filetypes = { 'swift', 'objc', 'objcpp', 'c', 'cpp' },
+  filetypes = { 'swift', 'objc', 'objcpp' },
   root_markers = { 'buildServer.json', '*.xcodeproj', '*.xcodeworkspace', 'compile_commands.json', 'Package.swift', '.git' },
   get_language_id = function(_, ftype)
     local t = { objc = 'objective-c', objcpp = 'objective-cpp' }
