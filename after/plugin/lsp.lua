@@ -51,7 +51,7 @@ vim.lsp.config("*", {
   capabilities = capabilities
 })
 
-local lsps = { "basedpyright", "luals", "bashls", "nil", "neocmake", "sourcekit", "yamlls", "tsls", "taplo", "astro",
+local lsps = { "clangd", "basedpyright", "luals", "bashls", "nil", "neocmake", "sourcekit", "yamlls", "tsls", "taplo", "astro",
   "html", "jsonls", "cssls" }
 
 for _, lsp in ipairs(lsps) do
