@@ -65,6 +65,14 @@ return {
     lazy = false, -- This plugin is already lazy
   },
   {
+    'isovector/cornelis',
+    name = 'cornelis',
+    ft = 'agda',
+    build = 'stack install',
+    dependencies = { 'neovimhaskell/nvim-hs.vim', 'kana/vim-textobj-user' },
+    version = '*',
+  },
+  {
     'Julian/lean.nvim',
     event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
 
