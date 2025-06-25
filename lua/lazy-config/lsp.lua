@@ -98,28 +98,43 @@ return {
   },
   {
     "scalameta/nvim-metals",
+    ft = { "scala", "sbt" },
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "saghen/blink.cmp",
     },
-    ft = { "scala", "sbt" },
-    opts = function()
+    config = function()
       local metals_config = require("metals").bare_config()
-      metals_config.on_attach = function(client, bufnr)
-        -- your on_attach function
+      metals_config.settings = {
+        useGlobalExecutable = true,
+        showImplicitArguments = false,
+        showImplicitConversionsAndClasses = false,
+        showInferredType = true,
+        autoImportBuild = "initial",
+        serverProperties = {
+          "-Xmx2G",
+          "-Dmetals.enable-best-effort=true",
+        },
+        inlayHints = {
+          hintsInPatternMatch = { enable = true },
+          implicitArguments = { enable = false },
+          implicitConversions = { enable = false },
+          inferredTypes = { enable = true },
+          typeParameters = { enable = false },
+        },
+      }
+      metals_config.init_options.statusBarProvider = "off"
+      metals_config.on_attach = function()
+        require("metals").setup_dap()
       end
 
-      return metals_config
-    end,
-    config = function(self, metals_config)
-      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = self.ft,
+        pattern = { "scala", "sbt", "java" },
         callback = function()
           require("metals").initialize_or_attach(metals_config)
         end,
-        group = nvim_metals_group,
       })
-    end
+    end,
   },
   {
     'moonbit-community/moonbit.nvim',
