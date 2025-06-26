@@ -25,7 +25,7 @@ return {
   {
     "rebelot/heirline.nvim",
     dependencies = { "Zeioth/heirline-components.nvim" },
-    event = "BufReadPost",
+    event = "BufReadPost BufNewFile",
     opts = function()
       local lib = require "heirline-components.all"
       return {
