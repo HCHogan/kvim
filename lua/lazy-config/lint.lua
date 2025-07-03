@@ -49,6 +49,7 @@ return {
         markdown = { 'biome' },
 
         haskell = { 'ormolu' },
+        ocaml = { 'ocamlformat' },
         python = { 'ruff' },
         nix = { 'alejandra' },
       },
