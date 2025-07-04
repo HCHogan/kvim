@@ -139,7 +139,6 @@ return {
   {
     'moonbit-community/moonbit.nvim',
     ft = { 'moonbit' },
-    dir = { '~/Development/moonbit.nvim' },
     opts = {
       treesitter = {
         enabled = true,
