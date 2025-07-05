@@ -3,6 +3,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = "VeryLazy",
+    dependencies = { 'moonbit-community/moonbit.nvim' },
     opts = {
       auto_install = true,
       highlight = {
