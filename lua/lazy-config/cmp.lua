@@ -148,14 +148,19 @@ return {
         nerd_font_variant = 'mono'
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'emoji' },
+        default = { 'mooncake', 'lsp', 'path', 'snippets', 'buffer', 'emoji' },
         providers = {
+          mooncake = {
+            name   = 'Mooncakes',
+            module = 'moonbit.mooncakes.completion.blink',
+            opts   = { max_items = 100 },
+          },
           emoji = {
             module = "blink-emoji",
             name = "Emoji",
             score_offset = 15, -- Tune by preference
             opts = {
-              insert = true, -- Insert emoji (default) or complete its name
+              insert = true,   -- Insert emoji (default) or complete its name
               ---@type string|table|fun():table
               trigger = function()
                 return { ":" }
