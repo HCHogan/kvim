@@ -97,6 +97,17 @@ return {
     }
   },
   {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      -- "nvim-telescope/telescope.nvim", -- optional
+      -- "neovim/nvim-lspconfig", -- optional
+    },
+    opts = {} -- your configuration
+  },
+  {
     "scalameta/nvim-metals",
     ft = { "scala", "sbt" },
     dependencies = {
@@ -156,24 +167,6 @@ return {
       }
     },
   },
-  -- {
-  --   'Julian/lean.nvim',
-  --   event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
-  --
-  --   dependencies = {
-  --     'neovim/nvim-lspconfig',
-  --     'nvim-lua/plenary.nvim',
-  --   },
-  --
-  --   -- see details below for full configuration options
-  --   opts = {
-  --     lsp = {},
-  --     mappings = true,
-  --     infoview = {
-  --       width = 40,
-  --     }
-  --   }
-  -- },
   {
     'wojciech-kulik/xcodebuild.nvim',
     lazy = true,
