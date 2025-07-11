@@ -99,7 +99,7 @@ return {
   {
     "luckasRanarison/tailwind-tools.nvim",
     name = "tailwind-tools",
-    ft = { "js", "ts", "jsx", "tsx", "vue", "astro" },
+    ft = { "js", "ts", "javascriptreact", "typescriptreact", "vue", "astro" },
     build = ":UpdateRemotePlugins",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
