@@ -90,7 +90,7 @@ return {
       { '<C-c><C-m>', '<Cmd>CornelisElaborate<CR>', desc = 'Cornelis: Fill goal with normalized hole contents' },
       { '<C-c><C-a>', '<Cmd>CornelisAuto<CR>', desc = 'Cornelis: Automatic proof search' },
       { '<C-c><C-c>', '<Cmd>CornelisMakeCase<CR>', desc = 'Cornelis: Case split' },
-      { '<C-c>,', '<Cmd>CornelisTypeContext<CR>', desc = 'Cornelis: Show goal type and context' },
+      { '<C-c><C-,>', '<Cmd>CornelisTypeContext<CR>', desc = 'Cornelis: Show goal type and context' },
       { '<C-c><C-d>', '<Cmd>CornelisTypeInfer<CR>', desc = 'Cornelis: Show inferred type of hole contents' },
       { '<C-c><C-.>', '<Cmd>CornelisTypeContextInfer<CR>', desc = 'Cornelis: Show type, context & inferred type' },
       { '<C-c><C-n>', '<Cmd>CornelisNormalize<CR>', desc = 'Cornelis: Compute normal of hole contents' },
