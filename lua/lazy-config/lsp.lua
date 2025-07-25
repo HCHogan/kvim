@@ -69,6 +69,9 @@ return {
     name = 'cornelis',
     ft = 'agda',
     build = 'stack install',
+    init = function()
+      vim.g.cornelis_no_agda_input = true
+    end,
     dependencies = { 'neovimhaskell/nvim-hs.vim', 'kana/vim-textobj-user' },
     version = '*',
     keys = {
