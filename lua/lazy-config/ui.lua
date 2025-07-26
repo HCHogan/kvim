@@ -61,6 +61,7 @@ return {
     "webhooked/kanso.nvim",
     lazy = false,
     priority = 1000,
+    commit = "748023fd273782e6e056620ce66a176532cdf375",
     config = function()
       require('kanso').setup {
         transparent = false,
