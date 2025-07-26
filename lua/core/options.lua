@@ -85,6 +85,13 @@ for _, sev in ipairs({ "Error", "Warn", "Info", "Hint" }) do
   })
 end
 
+vim.diagnostic.config({
+  update_in_insert = true,
+  virtual_text     = true,
+  underline        = true,
+  severity_sort    = true,
+})
+
 if vim.g.neovide then
   local neovide_transparency = 0.75
   local neovide_transparency_point = 0.75
