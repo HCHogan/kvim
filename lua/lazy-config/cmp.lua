@@ -159,7 +159,7 @@ return {
         nerd_font_variant = 'mono'
       },
       sources = {
-        default = { 'mooncake', 'lsp', 'path', 'snippets', 'buffer', 'agda-symbols', 'emoji' },
+        default = { 'mooncake', 'lsp', 'path', 'snippets', 'buffer', 'agda_symbols', 'emoji' },
         providers = {
           agda_symbols = {
             name = "agda-symbols",
