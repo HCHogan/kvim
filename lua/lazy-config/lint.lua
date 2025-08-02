@@ -52,6 +52,7 @@ return {
         ocaml = { 'ocamlformat' },
         python = { 'ruff' },
         nix = { 'alejandra' },
+        elm = { 'elm_format' }
       },
     },
   },
