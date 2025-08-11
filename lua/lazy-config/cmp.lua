@@ -3,40 +3,6 @@ local function has_words_before()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
 end
 
--- local function get_kind_icon(CTX)
---   local lspkind = require("lspkind")
---   if CTX.item.source_name == "LSP" then
---     local icon = lspkind.symbolic(CTX.kind, { mode = "symbol" })
---     if icon then CTX.kind_icon = icon end
---   end
---   return { text = CTX.kind_icon .. CTX.icon_gap, highlight = CTX.kind_hl }
--- end
--- {
---   "onsails/lspkind-nvim",
---   opts = {
---     mode = "symbol",
---     symbol_map = {
---       Array = "󰅪",
---       Boolean = "⊨",
---       Class = "󰌗",
---       Constructor = "",
---       Key = "󰌆",
---       Namespace = "󰅪",
---       Null = "NULL",
---       Number = "#",
---       Object = "󰀚",
---       Package = "󰏗",
---       Property = "",
---       Reference = "",
---       Snippet = "",
---       String = "󰀬",
---       TypeParameter = "󰊄",
---       Unit = "",
---     },
---     menu = {},
---   },
--- },
-
 return {
   {
     'saghen/blink.cmp',
@@ -159,24 +125,15 @@ return {
         nerd_font_variant = 'mono'
       },
       sources = {
-        default = { 'mooncake', 'lsp', 'path', 'snippets', 'buffer', 'agda_symbols', 'emoji' },
+        default = { 'mooncake', 'lsp', 'path', 'snippets', 'buffer', 'emoji' },
+        per_filetype = {
+          agda = { inherit_defaults = true, 'agda_symbols' }
+        },
         providers = {
           agda_symbols = {
             name = "agda-symbols",
             module = 'blink.compat.source',
           },
-          -- agda_symbols = {
-          --   name = "agda_symbols",
-          --   module = "blink-agda-symbols",
-          --   opts = {
-          --     -- you can add extra symbols here. The table key is the
-          --     -- completion key, which gets prepended with a backslash '\'
-          --     extra = {
-          --       wknight = '♘',
-          --       moon = { "🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘" },
-          --     }
-          --   }
-          -- },
           mooncake = {
             name   = 'Mooncakes',
             module = 'moonbit.mooncakes.completion.blink',
@@ -206,7 +163,10 @@ return {
       },
 
       fuzzy = { implementation = "prefer_rust_with_warning" },
-      cmdline = { completion = { ghost_text = { enabled = false } } },
+      cmdline = {
+        keymap = { preset = 'inherit' },
+        completion = { menu = { auto_show = true } },
+      },
     },
     opts_extend = { "sources.default" }
   }
