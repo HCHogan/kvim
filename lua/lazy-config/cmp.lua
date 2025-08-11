@@ -3,6 +3,40 @@ local function has_words_before()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
 end
 
+-- local function get_kind_icon(CTX)
+--   local lspkind = require("lspkind")
+--   if CTX.item.source_name == "LSP" then
+--     local icon = lspkind.symbolic(CTX.kind, { mode = "symbol" })
+--     if icon then CTX.kind_icon = icon end
+--   end
+--   return { text = CTX.kind_icon .. CTX.icon_gap, highlight = CTX.kind_hl }
+-- end
+-- {
+--   "onsails/lspkind-nvim",
+--   opts = {
+--     mode = "symbol",
+--     symbol_map = {
+--       Array = "󰅪",
+--       Boolean = "⊨",
+--       Class = "󰌗",
+--       Constructor = "",
+--       Key = "󰌆",
+--       Namespace = "󰅪",
+--       Null = "NULL",
+--       Number = "#",
+--       Object = "󰀚",
+--       Package = "󰏗",
+--       Property = "",
+--       Reference = "",
+--       Snippet = "",
+--       String = "󰀬",
+--       TypeParameter = "󰊄",
+--       Unit = "",
+--     },
+--     menu = {},
+--   },
+-- },
+
 return {
   {
     'saghen/blink.cmp',
@@ -164,7 +198,6 @@ return {
 
       fuzzy = { implementation = "prefer_rust_with_warning" },
       cmdline = {
-        keymap = { preset = 'inherit' },
         completion = { menu = { auto_show = true } },
       },
     },
