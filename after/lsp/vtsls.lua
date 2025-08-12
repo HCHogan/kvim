@@ -14,7 +14,6 @@ return {
     'typescript',
     'typescriptreact',
     'typescript.tsx',
-    'vue'
   },
   settings = {
     vtsls = {
