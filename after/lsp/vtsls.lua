@@ -1,28 +1,51 @@
-local vue_language_server_path = 'vue-language-server'
-local vue_plugin = {
-  name = '@vue/typescript-plugin',
-  location = vue_language_server_path,
-  languages = { 'vue' },
-  configNamespace = 'typescript',
-}
+---@type vim.lsp.Config
 return {
-  cmd = { 'vtsls', '--stdio' },
   filetypes = {
-    'javascript',
-    'javascriptreact',
-    'javascript.jsx',
-    'typescript',
-    'typescriptreact',
-    'typescript.tsx',
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+    "vue",
   },
   settings = {
+    complete_function_calls = true,
     vtsls = {
+      autoUseWorkspaceTsdk = true,
+      enableMoveToFileCodeAction = true,
+      experimental = {
+        maxInlayHintLength = 30,
+        completion = {
+          enableServerSideFuzzyMatch = true,
+        },
+      },
       tsserver = {
         globalPlugins = {
-          vue_plugin,
+          {
+            configNamespace = "typescript",
+            enableForWorkspaceTypeScriptVersions = true,
+            languages = { "vue" },
+            location = "/etc/profiles/per-user/hank/bin/vue-language-server",
+            name = "@vue/typescript-plugin",
+          },
         },
       },
     },
+    typescript = {
+      updateImportsOnFileMove = { enabled = "always" },
+      -- tsdk = "./node_modules/typescript/lib",
+      suggest = {
+        completeFunctionCalls = true,
+      },
+      inlayHints = {
+        enumMemberValues = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        parameterNames = { enabled = "literals" },
+        parameterTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        variableTypes = { enabled = false },
+      },
+    },
   },
-  root_markers = { 'tsconfig.json', 'package.json', 'jsconfig.json', '.git' },
 }
