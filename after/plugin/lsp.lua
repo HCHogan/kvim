@@ -51,8 +51,8 @@ vim.lsp.config("*", {
   capabilities = capabilities
 })
 
-local lsps = { "clangd", "basedpyright", "luals", "bashls", "nil", "neocmake", "sourcekit", "yamlls", "tsls", "taplo",
-  "astro", "html", "jsonls", "cssls", "ocamllsp", "als", "elmls" }
+local lsps = { "clangd", "basedpyright", "luals", "bashls", "nil", "neocmake", "sourcekit", "yamlls", "taplo",
+  "astro", "html", "jsonls", "cssls", "ocamllsp", "als", "elmls", "vtsls" }
 
 for _, lsp in ipairs(lsps) do
   if vim.fn.executable(vim.lsp.config[lsp].cmd[1]) == 1 then
