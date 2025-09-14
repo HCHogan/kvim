@@ -218,6 +218,9 @@ return {
     --- @module 'blink.pairs'
     --- @type blink.pairs.Config
     opts = {
+      highlights = {
+        enabled = false,
+      }
     }
   }
 }
