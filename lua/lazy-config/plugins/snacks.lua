@@ -57,7 +57,8 @@ return {
       win = {
         height = 10,
         position = "bottom",
-        style = "minimal",
+        minimal = true,
+        -- style = "minimal",
       }
     },
     words = {

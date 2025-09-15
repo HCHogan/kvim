@@ -17,9 +17,9 @@ vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('x', 'j', 'gj')
 vim.keymap.set('x', 'k', 'gk')
 
-vim.keymap.set('n', '<M-t>', "<cmd>FloatermToggle<CR>", {desc = 'Toggle terminal'})
-vim.keymap.set('t', '<M-t>', "<cmd>FloatermToggle<CR>", {desc = 'Toggle terminal'})
-vim.keymap.set('n', '<leader>th', function() require('snacks').terminal() end, {desc = 'Toggle terminal'})
+vim.keymap.set('n', '<M-t>', function() require('snacks').terminal() end, {desc = 'Toggle terminal'})
+vim.keymap.set('t', '<M-t>', function() require('snacks').terminal() end, {desc = 'Toggle terminal'})
+-- vim.keymap.set('n', '<leader>th', function() require('snacks').terminal() end, {desc = 'Toggle terminal'})
 vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', {desc = 'Toggle file tree'})
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
