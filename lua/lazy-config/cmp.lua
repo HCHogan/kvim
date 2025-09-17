@@ -205,6 +205,7 @@ return {
   },
   {
     'saghen/blink.pairs',
+    event = 'BufReadPost',
     version = '*', -- (recommended) only required with prebuilt binaries
 
     -- download prebuilt binaries from github releases
