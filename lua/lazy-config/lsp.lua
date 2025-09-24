@@ -103,13 +103,10 @@ return {
     event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
 
     dependencies = {
-      'neovim/nvim-lspconfig',
       'nvim-lua/plenary.nvim',
+      'Saghen/blink.cmp',
 
       -- optional dependencies:
-
-      -- a completion engine
-      --    hrsh7th/nvim-cmp or Saghen/blink.cmp are popular choices
 
       -- 'nvim-telescope/telescope.nvim', -- for 2 Lean-specific pickers
       -- 'andymass/vim-matchup',          -- for enhanced % motion behavior
