@@ -55,7 +55,8 @@ local lsps = { "clangd", "basedpyright", "luals", "bashls", "nil", "neocmake", "
   "astro", "html", "jsonls", "cssls", "ocamllsp", "als", "elmls", "vtsls" }
 
 for _, lsp in ipairs(lsps) do
-  if vim.fn.executable(vim.lsp.config[lsp].cmd[1]) == 1 then
+  local cmd = vim.lsp.config[lsp].cmd
+  if cmd and vim.fn.executable(cmd[1]) == 1 then
     vim.lsp.enable(lsp)
   end
 end
