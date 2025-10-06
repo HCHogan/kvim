@@ -43,16 +43,16 @@ return {
     event = "BufReadPost",
     -- optional: provides snippets for the snippet source
     dependencies = {
-      {
-        'saghen/blink.compat',
-        -- use v2.* for blink.cmp v1.*
-        version = '2.*',
-        -- lazy.nvim will automatically load the plugin when it's required by blink.cmp
-        lazy = true,
-        -- make sure to set opts so that lazy.nvim calls blink.compat's setup
-        opts = {},
-      },
-      'HCHogan/cmp-agda-symbols',
+      -- {
+      --   'saghen/blink.compat',
+      --   -- use v2.* for blink.cmp v1.*
+      --   version = '2.*',
+      --   -- lazy.nvim will automatically load the plugin when it's required by blink.cmp
+      --   lazy = true,
+      --   -- make sure to set opts so that lazy.nvim calls blink.compat's setup
+      --   opts = {},
+      -- },
+      -- 'HCHogan/cmp-agda-symbols',
       'rafamadriz/friendly-snippets',
       'moyiz/blink-emoji.nvim',
       -- "4e554c4c/blink-cmp-agda-symbols",
@@ -160,14 +160,14 @@ return {
       },
       sources = {
         default = { 'mooncake', 'lsp', 'path', 'snippets', 'buffer', 'emoji' },
-        per_filetype = {
-          agda = { inherit_defaults = true, 'agda_symbols' }
-        },
+        -- per_filetype = {
+        --   agda = { inherit_defaults = true, 'agda_symbols' }
+        -- },
         providers = {
-          agda_symbols = {
-            name = "agda-symbols",
-            module = 'blink.compat.source',
-          },
+          -- agda_symbols = {
+          --   name = "agda-symbols",
+          --   module = 'blink.compat.source',
+          -- },
           mooncake = {
             name   = 'Mooncakes',
             module = 'moonbit.mooncakes.completion.blink',
