@@ -55,15 +55,17 @@ return {
     terminal = {
       enabled = true,
       win = {
+        style = "minimal",
         height = 10,
         position = "bottom",
-        minimal = true,
-        -- style = "minimal",
       }
     },
     words = {
       enabled = true,
     },
+    bigfile = {
+      enabled = true,
+    }
   },
   keys = {
     { "<leader>f<space>", function() require('snacks').picker.smart() end, desc = "Smart find files" },

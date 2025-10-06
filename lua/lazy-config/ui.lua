@@ -61,14 +61,15 @@ return {
     "webhooked/kanso.nvim",
     lazy = false,
     priority = 1000,
-    commit = "748023fd273782e6e056620ce66a176532cdf375",
+    -- commit = "748023fd273782e6e056620ce66a176532cdf375",
     config = function()
       require('kanso').setup {
+        -- compile = true,
         transparent = false,
         keywordStyle = { italic = false, bold = true },
         overrides = function(colors)
           return {
-            WinSeparator = { fg = colors.palette.inkBlack2, bold = false },
+            WinSeparator = { fg = colors.palette.inkBg2, bold = false },
           }
         end,
       }

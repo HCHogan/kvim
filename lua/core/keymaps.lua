@@ -17,10 +17,11 @@ vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('x', 'j', 'gj')
 vim.keymap.set('x', 'k', 'gk')
 
-vim.keymap.set('n', '<M-t>', function() require('snacks').terminal() end, {desc = 'Toggle terminal'})
-vim.keymap.set('t', '<M-t>', function() require('snacks').terminal() end, {desc = 'Toggle terminal'})
+vim.keymap.set('n', '<M-t>', function() require('snacks').terminal(nil, { win = { style = "minimal" } }) end,
+  { desc = 'Toggle terminal' })
+vim.keymap.set('t', '<M-t>', function() require('snacks').terminal() end, { desc = 'Toggle terminal' })
 -- vim.keymap.set('n', '<leader>th', function() require('snacks').terminal() end, {desc = 'Toggle terminal'})
-vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', {desc = 'Toggle file tree'})
+vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'Toggle file tree' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -38,6 +39,12 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.keymap.set('t', '<C-h>', [[<C-\><C-n><C-w>h]])
+vim.keymap.set('t', '<C-l>', [[<C-\><C-n><C-w>l]])
+vim.keymap.set('t', '<C-j>', [[<C-\><C-n><C-w>j]])
+vim.keymap.set('t', '<C-k>', [[<C-\><C-n><C-w>k]])
+
 vim.keymap.set('n', '<C-up>', function() require("smart-splits").resize_up() end,
   { desc = 'Resize split up' })
 vim.keymap.set('n', '<C-down>', function() require("smart-splits").resize_down() end,
@@ -45,6 +52,15 @@ vim.keymap.set('n', '<C-down>', function() require("smart-splits").resize_down()
 vim.keymap.set('n', '<C-left>', function() require("smart-splits").resize_left() end,
   { desc = 'Resize split left' })
 vim.keymap.set('n', '<C-right>', function() require("smart-splits").resize_right() end,
+  { desc = 'Resize split right' })
+
+vim.keymap.set('t', '<C-up>', function() require("smart-splits").resize_up() end,
+  { desc = 'Resize split up' })
+vim.keymap.set('t', '<C-down>', function() require("smart-splits").resize_down() end,
+  { desc = 'Resize split down' })
+vim.keymap.set('t', '<C-left>', function() require("smart-splits").resize_left() end,
+  { desc = 'Resize split left' })
+vim.keymap.set('t', '<C-right>', function() require("smart-splits").resize_right() end,
   { desc = 'Resize split right' })
 
 -- builtin toggle comment
