@@ -1,3 +1,4 @@
+vim.loader.enable(true)
 if vim.g.vscode ~= nil then return {} end
 
 require 'core.options'
