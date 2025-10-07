@@ -20,6 +20,7 @@ require('lazy').setup({
 
   { import = 'lazy-config.plugins' },
 }, {
+  rocks = { enabled = false },
   ui = {
     backdrop = 70,
     border = 'rounded',
