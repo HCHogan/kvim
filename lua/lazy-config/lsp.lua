@@ -266,6 +266,7 @@ return {
   },
   {
     'zbirenbaum/copilot.lua',
+    enabled = false,
     event = 'BufReadPost',
     config = function()
       require('copilot').setup {
