@@ -73,5 +73,9 @@ return {
     { "<leader>fw",       function() require('snacks').picker.grep() end,  desc = "Grep files" },
     { "<leader>fr",       function() require('snacks').picker.recent() end,desc = "Recent files"},
     { "<leader>g",        function() require('snacks').lazygit() end,      desc = "Lazygit" },
+    { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues (open)" },
+    { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
+    { "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
+    { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
   }
 }
