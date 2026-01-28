@@ -1,5 +1,9 @@
 return {
-  cmd = { 'clangd', "--background-index" },
+  cmd = { 'clangd',
+    "--background-index",
+    "--query-driver=" .. (os.getenv("CXX") or "clang++"),
+    "--extra-arg=-stdlib=libc++",
+  },
   root_markers = { '.clangd', 'compile_commands.json', '.git', '.clang-tidy', '.clang-format' },
   filetypes = { 'c', 'cpp', 'cuda', 'proto' },
   single_file_support = true,
