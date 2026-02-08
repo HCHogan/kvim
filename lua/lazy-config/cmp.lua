@@ -168,11 +168,6 @@ return {
           --   name = "agda-symbols",
           --   module = 'blink.compat.source',
           -- },
-          mooncake = {
-            name   = 'Mooncakes',
-            module = 'moonbit.mooncakes.completion.blink',
-            opts   = { max_items = 100 },
-          },
           emoji = {
             module = "blink-emoji",
             name = "Emoji",
